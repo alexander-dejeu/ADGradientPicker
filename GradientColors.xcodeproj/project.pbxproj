@@ -14,6 +14,7 @@
 		FA48D30A1E562F9700AB69E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48D3081E562F9700AB69E9 /* LaunchScreen.storyboard */; };
 		FA48D3151E562F9700AB69E9 /* GradientColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D3141E562F9700AB69E9 /* GradientColorsTests.swift */; };
 		FA48D3201E562F9800AB69E9 /* GradientColorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D31F1E562F9800AB69E9 /* GradientColorsUITests.swift */; };
+		FA48D32E1E56313400AB69E9 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D32D1E56313400AB69E9 /* Gradients.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		FA48D31B1E562F9800AB69E9 /* GradientColorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradientColorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA48D31F1E562F9800AB69E9 /* GradientColorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientColorsUITests.swift; sourceTree = "<group>"; };
 		FA48D3211E562F9800AB69E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA48D32D1E56313400AB69E9 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				FA48D3061E562F9700AB69E9 /* Assets.xcassets */,
 				FA48D3081E562F9700AB69E9 /* LaunchScreen.storyboard */,
 				FA48D30B1E562F9700AB69E9 /* Info.plist */,
+				FA48D32D1E56313400AB69E9 /* Gradients.swift */,
 			);
 			path = GradientColors;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				FA48D3021E562F9700AB69E9 /* ViewController.swift in Sources */,
 				FA48D3001E562F9700AB69E9 /* AppDelegate.swift in Sources */,
+				FA48D32E1E56313400AB69E9 /* Gradients.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
