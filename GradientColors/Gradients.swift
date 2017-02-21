@@ -608,8 +608,28 @@ class gradients{
   static let viciousStanceS1 = UIColor(red: 41.0/255.0, green: 50.0/255.0, blue: 60.0/255.0, alpha: 1)
   static let viciousStanceS2 = UIColor(red: 72.0/255.0, green: 85.0/255.0, blue: 99.0/255.0, alpha: 1)
   static let viciousStance : [UIColor] = [viciousStanceS1, viciousStanceS2]
-
-
   
   
+}
+
+extension UIColor{
+  func getHexValue() -> String{
+    var result = "#"
+    
+    var fRed: CGFloat = 0
+    var fGreen: CGFloat = 0
+    var fBlue: CGFloat = 0
+    var fAlpha: CGFloat = 0
+    
+    if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
+      
+      result += String(Int(fRed*255.0), radix: 16, uppercase: false)
+      result += String(Int(fGreen*255.0), radix: 16, uppercase: false)
+      result += String(Int(fBlue*255.0), radix: 16, uppercase: false)
+      
+    } else {
+      print("error: color could not be converted")
+    }
+    return result
+  }
 }

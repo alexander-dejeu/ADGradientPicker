@@ -32,12 +32,22 @@ extension ViewController : UICollectionViewDelegate{
 
 extension ViewController : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
+    
+    cell.gradientColors = gradients.amourAmour
+    
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 10
+  }
+}
+
+extension ViewController : UICollectionViewDelegateFlowLayout{
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let cellWidth = collectionView.frame.width / 2.0 - 16.0
+    return CGSize(width: cellWidth, height: cellWidth)
   }
 }
 
