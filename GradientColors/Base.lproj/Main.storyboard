@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GradientColors" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,126 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4c-9s-5HV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradients_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="VBY-Dc-zSo">
+                                        <rect key="frame" x="137.5" y="24" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="fA2-ND-tsi"/>
+                                            <constraint firstAttribute="height" constant="100" id="zuv-zf-01H"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How often do you find yourself looking for great gradients?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHF-Zx-Edj">
+                                        <rect key="frame" x="20" y="156" width="335" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtP-m7-ckJ">
+                                        <rect key="frame" x="20" y="201" width="335" height="21"/>
+                                        <string key="text">WebGradients is a free collection of 180 linear gradients that you can use ascontent backdrops in any part of your website. Easy copy CSS3 crossbrowser codeand use it in a moment! We've also prepared a .PNG version of each gradient. As a bonus, there are packs for Sketch &amp; Photoshop.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WLL-uf-yjk">
+                                        <rect key="frame" x="0.0" y="254" width="375" height="432"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="432" id="1Kj-UK-mNg"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tBg-dZ-KiO">
+                                            <size key="itemSize" width="349" height="313"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorCell" id="kwI-6h-NIS">
+                                                <rect key="frame" x="13" y="0.0" width="349" height="313"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="313"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
+                                                            <rect key="frame" x="53.5" y="37" width="241" height="241"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="26U-bt-CB1" secondAttribute="height" id="JVH-Wm-meQ"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="### Color Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yA7-6q-hIx">
+                                                            <rect key="frame" x="2" y="8" width="345" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hex Value1 --&gt; Hex Value2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izu-Pm-aXo">
+                                                            <rect key="frame" x="2" y="288" width="345" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" red="0.99545454545454548" green="0.99090909090909096" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstItem="yA7-6q-hIx" firstAttribute="top" secondItem="kwI-6h-NIS" secondAttribute="top" constant="8" id="3jC-bS-YXE"/>
+                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="top" secondItem="yA7-6q-hIx" secondAttribute="bottom" constant="8" id="APS-pw-xpM"/>
+                                                    <constraint firstItem="izu-Pm-aXo" firstAttribute="top" secondItem="26U-bt-CB1" secondAttribute="bottom" constant="10" id="Fgg-Zb-fV6"/>
+                                                    <constraint firstItem="izu-Pm-aXo" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="PW9-CQ-Yrd"/>
+                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="centerX" secondItem="kwI-6h-NIS" secondAttribute="centerX" id="TWv-po-82B"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yA7-6q-hIx" secondAttribute="trailing" constant="2" id="Z6M-NR-4sb"/>
+                                                    <constraint firstItem="yA7-6q-hIx" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="g1Z-We-JDT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="izu-Pm-aXo" secondAttribute="trailing" constant="2" id="utC-GE-yUr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="izu-Pm-aXo" secondAttribute="bottom" constant="4" id="vbh-ip-Lbm"/>
+                                                </constraints>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="Vp1-Dw-vha"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="5mr-VI-t6O"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="WLL-uf-yjk" firstAttribute="top" secondItem="vtP-m7-ckJ" secondAttribute="bottom" constant="32" id="0cJ-IP-3Ik"/>
+                                    <constraint firstAttribute="bottom" secondItem="WLL-uf-yjk" secondAttribute="bottom" constant="40" id="1GU-ci-hio"/>
+                                    <constraint firstItem="FHF-Zx-Edj" firstAttribute="top" secondItem="VBY-Dc-zSo" secondAttribute="bottom" constant="32" id="2f0-Fx-TT0"/>
+                                    <constraint firstItem="vtP-m7-ckJ" firstAttribute="top" secondItem="FHF-Zx-Edj" secondAttribute="bottom" constant="24" id="74x-U7-WQZ"/>
+                                    <constraint firstItem="VBY-Dc-zSo" firstAttribute="centerX" secondItem="U4c-9s-5HV" secondAttribute="centerX" id="9il-6W-how"/>
+                                    <constraint firstAttribute="trailing" secondItem="vtP-m7-ckJ" secondAttribute="trailing" constant="20" id="G2a-tt-jwJ"/>
+                                    <constraint firstItem="WLL-uf-yjk" firstAttribute="leading" secondItem="U4c-9s-5HV" secondAttribute="leading" id="Mb1-25-2lU"/>
+                                    <constraint firstItem="VBY-Dc-zSo" firstAttribute="top" secondItem="U4c-9s-5HV" secondAttribute="top" constant="24" id="N3e-cM-Uz4"/>
+                                    <constraint firstAttribute="trailing" secondItem="WLL-uf-yjk" secondAttribute="trailing" id="OHV-4L-XOO"/>
+                                    <constraint firstItem="FHF-Zx-Edj" firstAttribute="centerX" secondItem="VBY-Dc-zSo" secondAttribute="centerX" id="Ts7-ai-93p"/>
+                                    <constraint firstAttribute="trailing" secondItem="FHF-Zx-Edj" secondAttribute="trailing" constant="20" id="fzg-Ey-coF"/>
+                                    <constraint firstItem="vtP-m7-ckJ" firstAttribute="leading" secondItem="U4c-9s-5HV" secondAttribute="leading" constant="20" id="uCg-q5-9fA"/>
+                                    <constraint firstItem="FHF-Zx-Edj" firstAttribute="leading" secondItem="U4c-9s-5HV" secondAttribute="leading" constant="20" id="xi9-By-uRO"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U4c-9s-5HV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7UQ-mT-eYD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="U4c-9s-5HV" secondAttribute="bottom" id="PWA-KS-VcO"/>
+                            <constraint firstAttribute="trailing" secondItem="U4c-9s-5HV" secondAttribute="trailing" id="cYj-Ni-tVv"/>
+                            <constraint firstItem="U4c-9s-5HV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kto-A5-o53"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="colorCollectionView" destination="WLL-uf-yjk" id="87k-BB-8Nx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Gradients_Icon" width="512" height="512"/>
+    </resources>
 </document>
