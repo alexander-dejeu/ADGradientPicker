@@ -609,7 +609,12 @@ class gradients{
   static let viciousStanceS2 = UIColor(red: 72.0/255.0, green: 85.0/255.0, blue: 99.0/255.0, alpha: 1)
   static let viciousStance : [UIColor] = [viciousStanceS1, viciousStanceS2]
   
+  static let allColors: [[UIColor]] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
+  static func getRandomGradient() -> [UIColor]{
+    let randomIndex = Int(arc4random_uniform(UInt32(self.allColors.count)))
+    return self.allColors[randomIndex]
+  }
 }
 
 extension UIColor{

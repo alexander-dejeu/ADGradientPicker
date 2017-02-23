@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA171D8D1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA171D8C1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift */; };
+		FA23B6D61E5F70080056D07E /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23B6D51E5F70080056D07E /* BubbleTransition.swift */; };
 		FA48D3001E562F9700AB69E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D2FF1E562F9700AB69E9 /* AppDelegate.swift */; };
 		FA48D3021E562F9700AB69E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D3011E562F9700AB69E9 /* ViewController.swift */; };
 		FA48D3051E562F9700AB69E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48D3031E562F9700AB69E9 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		FA171D8C1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA23B6D51E5F70080056D07E /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
 		FA48D2FC1E562F9700AB69E9 /* GradientColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA48D2FF1E562F9700AB69E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA48D3011E562F9700AB69E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA23B6D41E5F6FF30056D07E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA23B6D51E5F70080056D07E /* BubbleTransition.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FA48D2F31E562F9700AB69E9 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		FA48D2FE1E562F9700AB69E9 /* GradientColors */ = {
 			isa = PBXGroup;
 			children = (
+				FA23B6D41E5F6FF30056D07E /* Helpers */,
 				FA48D2FF1E562F9700AB69E9 /* AppDelegate.swift */,
 				FA48D3011E562F9700AB69E9 /* ViewController.swift */,
 				FA48D3031E562F9700AB69E9 /* Main.storyboard */,
@@ -268,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA23B6D61E5F70080056D07E /* BubbleTransition.swift in Sources */,
 				FA48D3021E562F9700AB69E9 /* ViewController.swift in Sources */,
 				FA48D3001E562F9700AB69E9 /* AppDelegate.swift in Sources */,
 				FA171D8D1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift in Sources */,
