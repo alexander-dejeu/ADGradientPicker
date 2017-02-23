@@ -16,6 +16,8 @@ class ViewController: UIViewController {
   
   let transition = BubbleTransition()
   
+  var bubbleTranstionStartingPoint : CGPoint = CGPoint(x:0, y:0)
+  
   //MARK : - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()

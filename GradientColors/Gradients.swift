@@ -15,11 +15,25 @@ import UIKit
  own functions that I beilve will be useful for others as well.
  */
 
+enum direction{
+  case bottomLeftToTopRight
+  case middleTopToMiddleBottom
+  
+  func getStartEndPoints() -> [CGPoint]{
+    switch self{
+    case .bottomLeftToTopRight:
+      return [CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 0)]
+    case .middleTopToMiddleBottom:
+      return [CGPoint(x: 0.5, y: 0), CGPoint(x: 0.5, y: 1)]
+    }
+  }
+}
+
 class gradients{
   // 001 Warm Flame
   // BL to TR
-  static let warmFlameS1 = UIColor.red
-  static let warmFlameS2 = UIColor.yellow
+  static let warmFlameS1 = UIColor(red: 255.0/255.0, green: 154.0/255.0, blue: 158.0/255.0, alpha: 1)
+  static let warmFlameS2 = UIColor(red: 250.0/255.0, green: 208.0/255.0, blue: 196.0/255.0, alpha: 1)
   static let warmFlame : [UIColor] = [warmFlameS1, warmFlameS2]
   
   // 002 Night Fade

@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
+        <!--Full Screen View Controller-->
         <scene sceneID="vEX-j1-fTE">
             <objects>
-                <viewController id="Bag-fc-iMN" sceneMemberID="viewController">
+                <viewController id="Bag-fc-iMN" customClass="FullScreenViewController" customModule="GradientColors" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EkO-Cb-cQf"/>
                         <viewControllerLayoutGuide type="bottom" id="is4-C8-xET"/>
