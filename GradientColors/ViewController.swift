@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var colorCollectionView: UICollectionView!
   
+  @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
+  
   //MARK : - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +22,9 @@ class ViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     print(colorCollectionView.frame)
+    let multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
+    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32
+    collectionViewHeightConstrant.constant = height
   }
 
 }

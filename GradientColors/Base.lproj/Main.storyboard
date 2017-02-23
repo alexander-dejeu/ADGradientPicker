@@ -137,6 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionViewHeightConstrant" destination="VNy-Hh-xJq" id="FxI-rJ-RBY"/>
                         <outlet property="colorCollectionView" destination="WLL-uf-yjk" id="87k-BB-8Nx"/>
                     </connections>
                 </viewController>
