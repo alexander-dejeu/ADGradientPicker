@@ -18,6 +18,7 @@ import UIKit
 enum direction{
   case bottomLeftToTopRight
   case middleTopToMiddleBottom
+  case middleLeftToMiddleRight
   
   func getStartEndPoints() -> [CGPoint]{
     switch self{
@@ -25,6 +26,8 @@ enum direction{
       return [CGPoint(x: 0, y: 1), CGPoint(x: 1, y: 0)]
     case .middleTopToMiddleBottom:
       return [CGPoint(x: 0.5, y: 0), CGPoint(x: 0.5, y: 1)]
+    case .middleLeftToMiddleRight:
+      return [CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5)]
     }
   }
 }

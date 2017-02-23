@@ -19,6 +19,10 @@ class FullScreenViewController: UIViewController {
     
     let tapTouchGesture = UITapGestureRecognizer(target: self, action: #selector(setRandomGradient(_:)))
     self.view.addGestureRecognizer(tapTouchGesture)
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeRight.direction = UISwipeGestureRecognizerDirection.right
+    self.view.addGestureRecognizer(swipeRight)
   }
   
   //MARK: - Helpers
@@ -27,5 +31,19 @@ class FullScreenViewController: UIViewController {
     gradientLayer.colors = gradients.getRandomGradient().map {$0.cgColor}
   }
   
+  func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){
+    switch gestureRecognizer.direction{
+    case UISwipeGestureRecognizerDirection.right:
+      print("right")
+      self.dismiss(animated: true, completion: nil)
+//      self.dis
+    case UISwipeGestureRecognizerDirection.up:
+      print("up")
+    case UISwipeGestureRecognizerDirection.down:
+      print("hide it")
+    default:
+      print("Yeah some strange swipe")
+    }
+  }
   
 }

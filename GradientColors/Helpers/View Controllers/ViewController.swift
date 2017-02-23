@@ -21,6 +21,17 @@ class ViewController: UIViewController {
   //MARK : - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    for family: String in UIFont.familyNames
+    {
+      print("\(family)")
+      for names: String in UIFont.fontNames(forFamilyName: family)
+      {
+        print("== \(names)")
+      }
+    }
+    
+//    UIFont(name: "QuicksandDash-Regular", size: 35)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +59,8 @@ extension ViewController : UICollectionViewDelegate{
 extension ViewController : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
-    
+    cell.layer.cornerRadius = 10
+    cell.clipsToBounds = true
     cell.gradientColors = gradients.getRandomGradient()
     
     return cell
