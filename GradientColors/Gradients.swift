@@ -32,12 +32,34 @@ enum direction{
   }
 }
 
+struct gradient {
+  var title : String
+  var id : Int
+  var direction : direction
+  var colors : [UIColor]
+}
+
 class gradients{
+  // 000 Test many colors
+  // BL to TR
+  static let S1 = UIColor(red: 255.0/255.0, green: 154.0/255.0, blue: 158.0/255.0, alpha: 1)
+  static let S2 = UIColor(red: 250.0/255.0, green: 208.0/255.0, blue: 196.0/255.0, alpha: 1)
+  static let S3 : UIColor = .black
+  static let colors : [UIColor] = [S1,S3 , S2, S3]
+  
+  static let allColorsTest : [[UIColor]] = [colors]
+  
+  
   // 001 Warm Flame
   // BL to TR
+  static let warmFlameT = "Warm Flame"
+  static let warmFlameID = 1
+  static let warmFlameDir = direction.bottomLeftToTopRight
   static let warmFlameS1 = UIColor(red: 255.0/255.0, green: 154.0/255.0, blue: 158.0/255.0, alpha: 1)
   static let warmFlameS2 = UIColor(red: 250.0/255.0, green: 208.0/255.0, blue: 196.0/255.0, alpha: 1)
-  static let warmFlame : [UIColor] = [warmFlameS1, warmFlameS2]
+  static let warmFlameColors : [UIColor] = [warmFlameS1, warmFlameS2]
+  static let warmFlame = gradient(title: warmFlameT, id: warmFlameID, direction: warmFlameDir, colors: warmFlameColors)
+  
   
   // 002 Night Fade
   // MT to MB
@@ -626,7 +648,7 @@ class gradients{
   static let viciousStanceS2 = UIColor(red: 72.0/255.0, green: 85.0/255.0, blue: 99.0/255.0, alpha: 1)
   static let viciousStance : [UIColor] = [viciousStanceS1, viciousStanceS2]
   
-  static let allColors: [[UIColor]] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
+  static let allColors: [[UIColor]] = [warmFlameColors, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
   static func getRandomGradient() -> [UIColor]{
     let randomIndex = Int(arc4random_uniform(UInt32(self.allColors.count)))

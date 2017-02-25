@@ -22,14 +22,6 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    for family: String in UIFont.familyNames
-    {
-      print("\(family)")
-      for names: String in UIFont.fontNames(forFamilyName: family)
-      {
-        print("== \(names)")
-      }
-    }
     
 //    UIFont(name: "QuicksandDash-Regular", size: 35)
   }
@@ -62,6 +54,10 @@ extension ViewController : UICollectionViewDataSource{
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
     cell.gradientColors = gradients.getRandomGradient()
+    
+    if indexPath.item == 0{
+      cell.gradientColors = gradients.colors
+    }
     
     return cell
   }
