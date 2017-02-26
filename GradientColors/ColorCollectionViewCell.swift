@@ -24,18 +24,24 @@ class ColorCollectionViewCell: UICollectionViewCell {
   }
   
   func addGradient(){
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.frame = colorView.bounds
-    gradientLayer.colors = cellGradient?.colors.map {$0.cgColor}
+    if cellGradient?.direction == .radial {
+      let radialLayer = RadialGradientLayer(center: CGPoint(x: 0.5, y: 0.5), radius: self.bounds.height / 2.0, colors: (cellGradient?.colors.map {$0.cgColor})!)
+      colorView.layer.addSublayer(radialLayer)
+    }
+    else{
+      let gradientLayer = CAGradientLayer()
+      gradientLayer.frame = colorView.bounds
+      gradientLayer.colors = cellGradient?.colors.map {$0.cgColor}
+      
+      let startAndEndLocations = cellGradient?.direction.getStartEndPoints()
+      gradientLayer.startPoint = (startAndEndLocations?[0])!
+      gradientLayer.endPoint = (startAndEndLocations?[1])!
+      
+      print(gradientLayer.startPoint)
+      print(gradientLayer.endPoint)
+      colorView.layer.addSublayer(gradientLayer)
+    }
     
-    let startAndEndLocations = cellGradient?.direction.getStartEndPoints()
-    gradientLayer.startPoint = (startAndEndLocations?[0])!
-    gradientLayer.endPoint = (startAndEndLocations?[1])!
-    
-    print(gradientLayer.startPoint)
-    print(gradientLayer.endPoint)
-    
-    colorView.layer.addSublayer(gradientLayer)
   }
   
   func setHexLabel(){

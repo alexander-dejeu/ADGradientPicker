@@ -19,7 +19,8 @@ enum direction{
   case bottomLeftToTopRight
   case middleTopToMiddleBottom
   case middleLeftToMiddleRight
-//  case topLeftToBottomRightShiftedDown
+  case topLeft25PercentDownToBottomRight25PercentUp
+  case radial
   
   func getStartEndPoints() -> [CGPoint]{
     switch self{
@@ -29,6 +30,10 @@ enum direction{
       return [CGPoint(x: 0.5, y: 0), CGPoint(x: 0.5, y: 1)]
     case .middleLeftToMiddleRight:
       return [CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5)]
+    case .topLeft25PercentDownToBottomRight25PercentUp:
+      return [CGPoint(x: 0, y: 0.25), CGPoint(x: 1, y: 0.75)]
+    case .radial:
+      return [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0, y: 0)]
     }
   }
 }
@@ -110,9 +115,13 @@ class gradients{
   
   // 007 Sunny Morning
   // TODO: - Look into these TL to BR but ofset :P
+  static let sunnyMorningT = "Sunny Morning"
+  static let sunnyMorningID = 7
+  static let sunnyMorningDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let sunnyMorningS1 = UIColor(red: 247.0/255.0, green: 206.0/255.0, blue: 104.0/255.0, alpha: 1)
   static let sunnyMorningS2 = UIColor(red: 251.0/255.0, green: 171.0/255.0, blue: 126.0/255.0, alpha: 1)
-  static let sunnyMorning : [UIColor] = [sunnyMorningS1, sunnyMorningS2]
+  static let sunnyMorningColors : [UIColor] = [sunnyMorningS1, sunnyMorningS2]
+  static let sunnyMorning = gradient(title: sunnyMorningT, id: sunnyMorningID, direction: sunnyMorningDir, colors: sunnyMorningColors)
   
   // 008 Rainy Ashville
   // TM to BM
@@ -665,7 +674,7 @@ class gradients{
   
 //  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
-  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips]
+  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning]
   
   
   static func getRandomGradient() -> gradient{
@@ -694,4 +703,53 @@ extension UIColor{
     }
     return result
   }
+}
+
+
+class RadialGradientLayer: CALayer {
+  
+  override init(){
+    
+    super.init()
+    
+    needsDisplayOnBoundsChange = true
+  }
+  
+  init(center:CGPoint,radius:CGFloat,colors:[CGColor]){
+    
+    self.center = center
+    self.radius = radius
+    self.colors = colors
+    
+    super.init()
+    
+  }
+  
+  required init(coder aDecoder: NSCoder) {
+    
+    super.init()
+    
+  }
+  
+  var center:CGPoint = CGPoint(x: 50, y: 50)
+  var radius:CGFloat = 20
+  var colors:[CGColor] = [UIColor(red: 251/255, green: 237/255, blue: 33/255, alpha: 1.0).cgColor , UIColor(red: 251/255, green: 179/255, blue: 108/255, alpha: 1.0).cgColor]
+  
+  override func draw(in ctx: CGContext!) {
+    
+    ctx.saveGState()
+    
+    var colorSpace = CGColorSpaceCreateDeviceRGB()
+    
+    var locations:[CGFloat] = [0.0, 1.0]
+    
+    var gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: [0.0,1.0])
+    
+    var startPoint = CGPoint(x: 0, y: self.bounds.height)
+    var endPoint = CGPoint(x: self.bounds.width, y: self.bounds.height)
+    
+    ctx.drawRadialGradient(gradient!, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions(rawValue: 0))
+    
+  }
+  
 }
