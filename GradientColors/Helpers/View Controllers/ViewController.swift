@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     super.viewDidAppear(animated)
     print(colorCollectionView.frame)
     let multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
-    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32
+    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32 + 40
     collectionViewHeightConstrant.constant = height
   }
   
@@ -53,17 +53,17 @@ extension ViewController : UICollectionViewDataSource{
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
-    cell.gradientColors = gradients.getRandomGradient()
+    cell.cellGradient = gradients.allGradients[indexPath.item]
     
-    if indexPath.item == 0{
-      cell.gradientColors = gradients.colors
-    }
+//    if indexPath.item == 0{
+//      cell.gradientColors = gradients.colors
+//    }
     
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return gradients.allGradients.count
   }
 }
 

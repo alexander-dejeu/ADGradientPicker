@@ -28,7 +28,7 @@ class FullScreenViewController: UIViewController {
   //MARK: - Helpers
   func setRandomGradient(_ gestureRecognizer: UITapGestureRecognizer){
     gradientLayer.frame = self.view.bounds
-    gradientLayer.colors = gradients.getRandomGradient().map {$0.cgColor}
+    gradientLayer.colors = gradients.getRandomGradient().colors.map {$0.cgColor}
   }
   
   func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){

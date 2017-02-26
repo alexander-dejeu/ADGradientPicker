@@ -19,6 +19,7 @@ enum direction{
   case bottomLeftToTopRight
   case middleTopToMiddleBottom
   case middleLeftToMiddleRight
+//  case topLeftToBottomRightShiftedDown
   
   func getStartEndPoints() -> [CGPoint]{
     switch self{
@@ -51,7 +52,6 @@ class gradients{
   
   
   // 001 Warm Flame
-  // BL to TR
   static let warmFlameT = "Warm Flame"
   static let warmFlameID = 1
   static let warmFlameDir = direction.bottomLeftToTopRight
@@ -62,36 +62,51 @@ class gradients{
   
   
   // 002 Night Fade
-  // MT to MB
+  static let nightFadeT = "Night Fade"
+  static let nightFadeID = 2
+  static let nightFadeDir = direction.middleTopToMiddleBottom
   static let nightFadeS1 = UIColor(red: 251.0/255.0, green: 194.0/255.0, blue: 235.0/255.0, alpha: 1)
   static let nightFadeS2 = UIColor(red: 161.0/255.0, green: 140.0/255.0, blue: 209.0/255.0, alpha: 1)
-  static let nightFade : [UIColor] = [nightFadeS1, nightFadeS2]
+  static let nightFadeColors : [UIColor] = [nightFadeS1, nightFadeS2]
+  static let nightFade = gradient(title: nightFadeT, id: nightFadeID, direction: nightFadeDir, colors: nightFadeColors)
   
   // 003 Spring Warmth
-  // MT to MB
+  static let springWarmthT = "Spring Warmth"
+  static let springWarmthID = 3
+  static let springWarmthDir = direction.middleTopToMiddleBottom
   static let springWarmthS1 = UIColor(red: 255.0/255.0, green: 209.0/255.0, blue: 255.0/255.0, alpha: 1)
   static let springWarmthS2 = UIColor(red: 250.0/255.0, green: 208.0/255.0, blue: 196.0/255.0, alpha: 1)
-  static let springWarmth : [UIColor] = [springWarmthS1, springWarmthS2]
+  static let springWarmthColors : [UIColor] = [springWarmthS1, springWarmthS2]
+  static let springWarmth = gradient(title: springWarmthT, id: springWarmthID, direction: springWarmthDir, colors: springWarmthColors)
   
   // 004 Juicy Peach
-  // ML to MR
+  static let juicyPeachT = "Juicy Peach"
+  static let juicyPeachID = 4
+  static let juicyPeachDir = direction.middleLeftToMiddleRight
   static let juicyPeachS1 = UIColor(red: 255.0/255.0, green: 236.0/255.0, blue: 210.0/255.0, alpha: 1)
   static let juicyPeachS2 = UIColor(red: 252.0/255.0, green: 182.0/255.0, blue: 159.0/255.0, alpha: 1)
-  static let juicyPeach : [UIColor] = [juicyPeachS1, juicyPeachS2]
+  static let juicyPeachColors : [UIColor] = [juicyPeachS1, juicyPeachS2]
+  static let juicyPeach = gradient(title: juicyPeachT, id: juicyPeachID, direction: juicyPeachDir, colors: juicyPeachColors)
   
   // 005 Young Passion
-  // TODO: COME BACK TO ADD MULTI SUPPORT?
-  static let youngPassionS1 = UIColor(red: 255.0/255.0, green: 236.0/255.0, blue: 210.0/255.0, alpha: 1)
-  static let youngPassionS2 = UIColor(red: 255.0/255.0, green: 236.0/255.0, blue: 210.0/255.0, alpha: 1)
-  static let youngPassionS3 = UIColor(red: 255.0/255.0, green: 236.0/255.0, blue: 210.0/255.0, alpha: 1)
-  static let youngPassionS4 = UIColor(red: 255.0/255.0, green: 236.0/255.0, blue: 210.0/255.0, alpha: 1)
-  static let youngPassion : [UIColor] = [youngPassionS1, youngPassionS2, youngPassionS3, youngPassionS4]
+  static let youngPassionT = "Young Passion"
+  static let youngPassionID = 5
+  static let youngPassionDir = direction.middleLeftToMiddleRight
+  static let youngPassionS1 = UIColor(red: 255.0/255.0, green: 129.0/255.0, blue: 119.0/255.0, alpha: 1)
+  static let youngPassionS2 = UIColor(red: 255.0/255.0, green: 140.0/255.0, blue: 127.0/255.0, alpha: 1)
+  static let youngPassionS3 = UIColor(red: 207.0/255.0, green: 85.0/255.0, blue: 108.0/255.0, alpha: 1)
+  static let youngPassionS4 = UIColor(red: 177.0/255.0, green: 42.0/255.0, blue: 91.0/255.0, alpha: 1)
+  static let youngPassionColors : [UIColor] = [youngPassionS1, youngPassionS2, youngPassionS3, youngPassionS4]
+  static let youngPassion = gradient(title: youngPassionT, id: youngPassionID, direction: youngPassionDir, colors: youngPassionColors)
   
   // 006 Lady Lips
-  // MT to MB
+  static let ladyLipsT = "Lady Lips"
+  static let ladyLipsID = 6
+  static let ladyLipsDir = direction.middleTopToMiddleBottom
   static let ladyLipsS1 = UIColor(red: 254.0/255.0, green: 207.0/255.0, blue: 239.0/255.0, alpha: 1)
   static let ladyLipsS2 = UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 156.0/255.0, alpha: 1)
-  static let ladyLips : [UIColor] = [ladyLipsS1, ladyLipsS2]
+  static let ladyLipsColors : [UIColor] = [ladyLipsS1, ladyLipsS2]
+  static let ladyLips = gradient(title: ladyLipsT, id: ladyLipsID, direction: ladyLipsDir, colors: ladyLipsColors)
   
   // 007 Sunny Morning
   // TODO: - Look into these TL to BR but ofset :P
@@ -648,11 +663,14 @@ class gradients{
   static let viciousStanceS2 = UIColor(red: 72.0/255.0, green: 85.0/255.0, blue: 99.0/255.0, alpha: 1)
   static let viciousStance : [UIColor] = [viciousStanceS1, viciousStanceS2]
   
-  static let allColors: [[UIColor]] = [warmFlameColors, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
+//  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
-  static func getRandomGradient() -> [UIColor]{
-    let randomIndex = Int(arc4random_uniform(UInt32(self.allColors.count)))
-    return self.allColors[randomIndex]
+  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips]
+  
+  
+  static func getRandomGradient() -> gradient{
+    let randomIndex = Int(arc4random_uniform(UInt32(self.allGradients.count)))
+    return self.allGradients[randomIndex]
   }
 }
 
