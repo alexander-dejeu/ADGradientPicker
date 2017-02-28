@@ -114,7 +114,6 @@ class gradients{
   static let ladyLips = gradient(title: ladyLipsT, id: ladyLipsID, direction: ladyLipsDir, colors: ladyLipsColors)
   
   // 007 Sunny Morning
-  // TODO: - Look into these TL to BR but ofset :P
   static let sunnyMorningT = "Sunny Morning"
   static let sunnyMorningID = 7
   static let sunnyMorningDir = direction.topLeft25PercentDownToBottomRight25PercentUp
@@ -124,22 +123,31 @@ class gradients{
   static let sunnyMorning = gradient(title: sunnyMorningT, id: sunnyMorningID, direction: sunnyMorningDir, colors: sunnyMorningColors)
   
   // 008 Rainy Ashville
-  // TM to BM
+  static let rainyAshvilleT = "Rainy Ashville"
+  static let rainyAshvilleID = 8
+  static let rainyAshvilleDir = direction.middleTopToMiddleBottom
   static let rainyAshvilleS1 = UIColor(red: 165.0/255.0, green: 192.0/255.0, blue: 238.0/255.0, alpha: 1)
   static let rainyAshvilleS2 = UIColor(red: 251.0/255.0, green: 197.0/255.0, blue: 236.0/255.0, alpha: 1)
-  static let rainyAshville : [UIColor] = [rainyAshvilleS1, rainyAshvilleS2]
+  static let rainyAshvilleColors : [UIColor] = [rainyAshvilleS1, rainyAshvilleS2]
+  static let rainyAshville = gradient(title: rainyAshvilleT, id: rainyAshvilleID, direction: rainyAshvilleDir, colors: rainyAshvilleColors)
   
   // 009 Frozen Dreams
-  // TM to BM
+  static let frozenDreamsT = "Frozen Dreams"
+  static let frozenDreamsID = 9
+  static let frozenDreamsDir = direction.middleTopToMiddleBottom
   static let frozenDreamsS1 = UIColor(red: 230.0/255.0, green: 222.0/255.0, blue: 233.0/255.0, alpha: 1)
   static let frozenDreamsS2 = UIColor(red: 253.0/255.0, green: 202.0/255.0, blue: 241.0/255.0, alpha: 1)
-  static let frozenDreams : [UIColor] = [frozenDreamsS1, frozenDreamsS2]
+  static let frozenDreamsColors : [UIColor] = [frozenDreamsS1, frozenDreamsS2]
+  static let frozenDreams = gradient(title: frozenDreamsT, id: frozenDreamsID, direction: frozenDreamsDir, colors: frozenDreamsColors)
   
   // 010 Winter Neva
-  // TODO: - Look into these TL to BR but ofset :P
+  static let winterNevaT = "Winter Neva"
+  static let winterNevaID = 10
+  static let winterNevaDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let winterNevaS1 = UIColor(red: 161.0/255.0, green: 196.0/255.0, blue: 253.0/255.0, alpha: 1)
   static let winterNevaS2 = UIColor(red: 194.0/255.0, green: 233.0/255.0, blue: 244.0/255.0, alpha: 1)
-  static let winterNeva : [UIColor] = [winterNevaS1, winterNevaS2]
+  static let winterNevaColors : [UIColor] = [winterNevaS1, winterNevaS2]
+  static let winterNeva = gradient(title: winterNevaT, id: winterNevaID, direction: winterNevaDir, colors: winterNevaColors)
   
   // 011 Dusty Grass
   // TODO: - Look into these TL to BR but ofset :P
@@ -678,7 +686,7 @@ class gradients{
   
 //  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
-  static let allGradients : [gradient] = [arielleSmile, warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning]
+  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, arielleSmile]
   
   
   static func getRandomGradient() -> gradient{

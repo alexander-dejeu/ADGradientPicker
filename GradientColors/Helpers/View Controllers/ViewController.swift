@@ -14,16 +14,20 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
   
+  @IBAction func selectRandomColor(sender: UIButton){
+    self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
+  }
+  
   let transition = BubbleTransition()
   
   var bubbleTranstionStartingPoint : CGPoint = CGPoint(x:0, y:0)
   
+  var selectedGradient : gradient? = nil
+  var singleFullScreen = false
+  
   //MARK : - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
-//    UIFont(name: "QuicksandDash-Regular", size: 35)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -35,16 +39,24 @@ class ViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let controller = segue.destination
-    controller.transitioningDelegate = self
-    controller.modalPresentationStyle = .custom
+    if let controller = segue.destination as? FullScreenViewController{
+      controller.transitioningDelegate = self
+      controller.modalPresentationStyle = .custom
+      controller.singleFullScreen = singleFullScreen
+      controller.gradient = selectedGradient
+    }
   }
 
 }
 
 extension ViewController : UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print(indexPath.item)
+    singleFullScreen = true
+    if let selectedCell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell{
+      selectedGradient = selectedCell.cellGradient
+    }
+    self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
+    
   }
 }
 
@@ -54,10 +66,6 @@ extension ViewController : UICollectionViewDataSource{
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
     cell.cellGradient = gradients.allGradients[indexPath.item]
-    
-//    if indexPath.item == 0{
-//      cell.gradientColors = gradients.colors
-//    }
     
     return cell
   }
@@ -84,6 +92,7 @@ extension ViewController : UIViewControllerTransitioningDelegate {
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     transition.transitionMode = .dismiss
     transition.startingPoint = self.view.center
+    singleFullScreen = false
     return transition
   }
 }

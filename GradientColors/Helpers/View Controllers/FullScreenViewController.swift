@@ -11,6 +11,8 @@ import UIKit
 class FullScreenViewController: UIViewController {
 
   let gradientLayer = CAGradientLayer()
+  var gradient : gradient? = nil
+  var singleFullScreen = false
   
   //MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -23,12 +25,22 @@ class FullScreenViewController: UIViewController {
     let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
     swipeRight.direction = UISwipeGestureRecognizerDirection.right
     self.view.addGestureRecognizer(swipeRight)
+    
+    if !singleFullScreen {
+      gradient = gradients.getRandomGradient()
+    }
+    gradientLayer.frame = self.view.bounds
+    gradientLayer.colors = gradient?.colors.map {$0.cgColor}
   }
   
   //MARK: - Helpers
   func setRandomGradient(_ gestureRecognizer: UITapGestureRecognizer){
-    gradientLayer.frame = self.view.bounds
-    gradientLayer.colors = gradients.getRandomGradient().colors.map {$0.cgColor}
+    if singleFullScreen {
+      self.dismiss(animated: true, completion: nil)
+    }
+    else{
+      gradientLayer.colors = gradients.getRandomGradient().colors.map {$0.cgColor}
+    }
   }
   
   func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){
