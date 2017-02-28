@@ -239,9 +239,13 @@ class gradients{
   
   // 027 Arielle's Smile
   // TODO : Radial thing S1 = Center and S2 equals the outer bound one
+  static let arielleSmileT = "Arielle's Smile"
+  static let arielleSmileID = 27
+  static let arielleSmileDir = direction.radial
   static let arielleSmileS1 = UIColor(red: 22.0/255.0, green: 217.0/255.0, blue: 227.0/255.0, alpha: 1)
   static let arielleSmileS2 = UIColor(red: 70.0/255.0, green: 174.0/255.0, blue: 247.0/255.0, alpha: 1)
-  static let arielleSmile : [UIColor] = [arielleSmileS1, arielleSmileS2]
+  static let arielleSmileColors : [UIColor] = [arielleSmileS1, arielleSmileS2]
+  static let arielleSmile = gradient(title: arielleSmileT, id: arielleSmileID, direction: arielleSmileDir, colors: arielleSmileColors)
   
   // 028 Plum Plate
   // TL to BR
@@ -674,7 +678,7 @@ class gradients{
   
 //  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
-  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning]
+  static let allGradients : [gradient] = [arielleSmile, warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning]
   
   
   static func getRandomGradient() -> gradient{
@@ -705,13 +709,10 @@ extension UIColor{
   }
 }
 
-
 class RadialGradientLayer: CALayer {
   
   override init(){
-    
     super.init()
-    
     needsDisplayOnBoundsChange = true
   }
   
@@ -731,25 +732,63 @@ class RadialGradientLayer: CALayer {
     
   }
   
-  var center:CGPoint = CGPoint(x: 50, y: 50)
+  var center:CGPoint = CGPoint(x: 50,y: 50)
   var radius:CGFloat = 20
   var colors:[CGColor] = [UIColor(red: 251/255, green: 237/255, blue: 33/255, alpha: 1.0).cgColor , UIColor(red: 251/255, green: 179/255, blue: 108/255, alpha: 1.0).cgColor]
   
-  override func draw(in ctx: CGContext!) {
+  override func draw(in ctx: CGContext) {
     
     ctx.saveGState()
     
-    var colorSpace = CGColorSpaceCreateDeviceRGB()
-    
-    var locations:[CGFloat] = [0.0, 1.0]
-    
-    var gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: [0.0,1.0])
-    
-    var startPoint = CGPoint(x: 0, y: self.bounds.height)
-    var endPoint = CGPoint(x: self.bounds.width, y: self.bounds.height)
+    let colorSpace = CGColorSpaceCreateDeviceRGB()
+     
+    let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: [0.0,1.0])
     
     ctx.drawRadialGradient(gradient!, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions(rawValue: 0))
     
   }
   
 }
+
+//class RadialGradientLayer: CALayer {
+//  
+//  var center: CGPoint {
+//    return CGPoint(x: bounds.width/2, y: bounds.height/2)
+//  }
+//  
+//  var radius: CGFloat {
+//    return (bounds.width + bounds.height)/2
+//  }
+//  
+//  var colors: [UIColor] = [UIColor.black, UIColor.lightGray] {
+//    didSet {
+//      setNeedsDisplay()
+//    }
+//  }
+//  
+//  var cgColors: [CGColor] {
+//    return colors.map({ (color) -> CGColor in
+//      return color.cgColor
+//    })
+//  }
+//  
+//  override init() {
+//    super.init()
+//    needsDisplayOnBoundsChange = true
+//  }
+//  
+//  required init(coder aDecoder: NSCoder) {
+//    super.init()
+//  }
+//  
+//  override func draw(in ctx: CGContext) {
+//    ctx.saveGState()
+//    let colorSpace = CGColorSpaceCreateDeviceRGB()
+//    let locations: [CGFloat] = [0.0, 1.0]
+//    guard let gradient = CGGradient(colorsSpace: colorSpace, colors: cgColors as CFArray, locations: locations) else {
+//      return
+//    }
+//    ctx.drawRadialGradient(gradient, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions(rawValue: 0))
+//  }
+//  
+//}

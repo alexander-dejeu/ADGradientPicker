@@ -25,8 +25,18 @@ class ColorCollectionViewCell: UICollectionViewCell {
   
   func addGradient(){
     if cellGradient?.direction == .radial {
-      let radialLayer = RadialGradientLayer(center: CGPoint(x: 0.5, y: 0.5), radius: self.bounds.height / 2.0, colors: (cellGradient?.colors.map {$0.cgColor})!)
+      let radialLayer = RadialGradientLayer(center: CGPoint(x: colorView.frame.width/2, y: colorView.frame.height/2) , radius: self.colorView.bounds.width, colors: (cellGradient?.colors.map {$0.cgColor})!)
+      
+      radialLayer.setNeedsDisplay()
+      radialLayer.frame = CGRect(x: 0, y: 0, width: colorView.frame.width, height: colorView.frame.height)
       colorView.layer.addSublayer(radialLayer)
+      print(radialLayer.frame)
+      print(radialLayer.bounds)
+      print(radialLayer.center)
+      
+
+      
+      
     }
     else{
       let gradientLayer = CAGradientLayer()
@@ -37,8 +47,6 @@ class ColorCollectionViewCell: UICollectionViewCell {
       gradientLayer.startPoint = (startAndEndLocations?[0])!
       gradientLayer.endPoint = (startAndEndLocations?[1])!
       
-      print(gradientLayer.startPoint)
-      print(gradientLayer.endPoint)
       colorView.layer.addSublayer(gradientLayer)
     }
     

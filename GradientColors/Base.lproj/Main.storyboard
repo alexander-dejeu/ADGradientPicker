@@ -75,7 +75,6 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
                                                             <rect key="frame" x="30.5" y="31" width="115" height="115"/>
-                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="26U-bt-CB1" secondAttribute="height" id="JVH-Wm-meQ"/>
                                                             </constraints>
