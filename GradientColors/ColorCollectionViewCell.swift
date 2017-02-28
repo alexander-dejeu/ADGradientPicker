@@ -8,11 +8,24 @@
 
 import UIKit
 
+enum shapeOutline {
+  case square
+  case circle
+}
+
+enum cellSize {
+  case quarterSquare
+  case square
+  case rectangle
+}
+
 class ColorCollectionViewCell: UICollectionViewCell {
 
   @IBOutlet weak var colorTitleLabel : UILabel!
   @IBOutlet weak var colorView : UIView!
   @IBOutlet weak var colorHexLabel : UILabel!
+  
+  var colorViewOutline : shapeOutline = .square
   
   var cellGradient : gradient? = nil{
     didSet{
@@ -50,6 +63,15 @@ class ColorCollectionViewCell: UICollectionViewCell {
       colorView.layer.addSublayer(gradientLayer)
     }
     
+    if colorViewOutline == .square{
+      colorView.addCornerRadiusAnimation(to: 0, duration: 0.2)
+      colorView.clipsToBounds = true
+    }
+    else if colorViewOutline == .circle{
+      colorView.addCornerRadiusAnimation(to: colorView.frame.width / 2.0, duration: 0.2)
+      colorView.clipsToBounds = true
+    }
+    
   }
   
   func setHexLabel(){
@@ -59,5 +81,19 @@ class ColorCollectionViewCell: UICollectionViewCell {
     else if cellGradient?.colors.count == 2 {
       colorHexLabel.text = "\(cellGradient!.colors[0].getHexValue()) → \(cellGradient!.colors[1].getHexValue())"
     }
+  }
+}
+
+extension UIView
+{
+  func addCornerRadiusAnimation(to: CGFloat, duration: CFTimeInterval)
+  {
+    let animation = CABasicAnimation(keyPath:"cornerRadius")
+    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    animation.fromValue = self.layer.cornerRadius
+    animation.toValue = to
+    animation.duration = duration
+    self.layer.add(animation, forKey: "cornerRadius")
+    self.layer.cornerRadius = to
   }
 }

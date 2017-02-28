@@ -10,10 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  // MARK: - IBOutlets
   @IBOutlet weak var colorCollectionView: UICollectionView!
-  
   @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
+  @IBOutlet weak var colorPreviewShapeView: UIView!
+  @IBOutlet weak var cellShapeView: UIView!
   
+  // MARK: - IBActions
   @IBAction func selectRandomColor(sender: UIButton){
     self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
   }
@@ -25,14 +28,22 @@ class ViewController: UIViewController {
   var selectedGradient : gradient? = nil
   var singleFullScreen = false
   
+  var currentShapeOutline : shapeOutline = .square
+  var currentCellShape : cellSize = .quarterSquare
+  
   //MARK : - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    let tapTouchGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapForColorPreviewShape(_:)))
+    self.colorPreviewShapeView.addGestureRecognizer(tapTouchGesture)
+    
+    let cellSizeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapForCellSize(_:)))
+    self.cellShapeView.addGestureRecognizer(cellSizeTapGesture)
   }
   
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    print(colorCollectionView.frame)
     let multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
     let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32 + 40
     collectionViewHeightConstrant.constant = height
@@ -46,7 +57,28 @@ class ViewController: UIViewController {
       controller.gradient = selectedGradient
     }
   }
-
+  
+  func handleTapForColorPreviewShape(_ gestureRecognizer: UITapGestureRecognizer){
+    switch currentShapeOutline{
+    case .square:
+      currentShapeOutline = .circle
+    case .circle:
+      currentShapeOutline = .square
+    }
+    colorCollectionView.reloadData()
+  }
+  
+  func handleTapForCellSize(_ gestureRecognizer: UITapGestureRecognizer){
+    switch currentCellShape{
+    case .quarterSquare:
+      currentCellShape = .rectangle
+    case .rectangle:
+      currentCellShape = .square
+    case .square:
+      currentCellShape = .quarterSquare
+    }
+    colorCollectionView.reloadData()
+  }
 }
 
 extension ViewController : UICollectionViewDelegate{
@@ -66,7 +98,7 @@ extension ViewController : UICollectionViewDataSource{
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
     cell.cellGradient = gradients.allGradients[indexPath.item]
-    
+    cell.colorViewOutline = currentShapeOutline
     return cell
   }
   
@@ -77,8 +109,17 @@ extension ViewController : UICollectionViewDataSource{
 
 extension ViewController : UICollectionViewDelegateFlowLayout{
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let cellWidth = collectionView.frame.width / 2.0 - 16.0
-    return CGSize(width: cellWidth, height: cellWidth)
+    switch currentCellShape{
+    case .quarterSquare:
+      let cellWidth = collectionView.frame.width / 2.0 - 16.0
+      return CGSize(width: cellWidth, height: cellWidth)
+    case .rectangle:
+      let cellWidth = collectionView.frame.width - 16.0
+      return CGSize(width: cellWidth, height: (collectionView.frame.width - 16.0) / 2.0)
+    case .square:
+      let cellWidth = collectionView.frame.width - 16.0
+      return CGSize(width: cellWidth, height: cellWidth)
+    }
   }
 }
 

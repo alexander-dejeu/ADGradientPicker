@@ -174,8 +174,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cellShapeView" destination="6oh-8U-BgO" id="h1U-RU-QE1"/>
                         <outlet property="collectionViewHeightConstrant" destination="VNy-Hh-xJq" id="FxI-rJ-RBY"/>
                         <outlet property="colorCollectionView" destination="WLL-uf-yjk" id="87k-BB-8Nx"/>
+                        <outlet property="colorPreviewShapeView" destination="W2r-1W-8Bd" id="7uf-Rp-58m"/>
                         <segue destination="Bag-fc-iMN" kind="presentation" identifier="SegueToFullScreen" id="bQN-1J-GmB"/>
                     </connections>
                 </viewController>
