@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -73,11 +72,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
                                                             <rect key="frame" x="30.5" y="31" width="115" height="115"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="26U-bt-CB1" secondAttribute="height" id="JVH-Wm-meQ"/>
-                                                            </constraints>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="### Color Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yA7-6q-hIx">
                                                             <rect key="frame" x="2" y="8" width="171" height="15"/>
@@ -96,10 +93,7 @@
                                                 <color key="backgroundColor" red="0.99545454545454548" green="0.99090909090909096" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="yA7-6q-hIx" firstAttribute="top" secondItem="kwI-6h-NIS" secondAttribute="top" constant="8" id="3jC-bS-YXE"/>
-                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="top" secondItem="yA7-6q-hIx" secondAttribute="bottom" constant="8" id="APS-pw-xpM"/>
-                                                    <constraint firstItem="izu-Pm-aXo" firstAttribute="top" secondItem="26U-bt-CB1" secondAttribute="bottom" constant="10" id="Fgg-Zb-fV6"/>
                                                     <constraint firstItem="izu-Pm-aXo" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="PW9-CQ-Yrd"/>
-                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="centerX" secondItem="kwI-6h-NIS" secondAttribute="centerX" id="TWv-po-82B"/>
                                                     <constraint firstAttribute="trailing" secondItem="yA7-6q-hIx" secondAttribute="trailing" constant="2" id="Z6M-NR-4sb"/>
                                                     <constraint firstItem="yA7-6q-hIx" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="g1Z-We-JDT"/>
                                                     <constraint firstAttribute="trailing" secondItem="izu-Pm-aXo" secondAttribute="trailing" constant="2" id="utC-GE-yUr"/>

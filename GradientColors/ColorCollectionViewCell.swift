@@ -27,6 +27,18 @@ class ColorCollectionViewCell: UICollectionViewCell {
   
   var colorViewOutline : shapeOutline = .square
   
+  func setViewSize(cellSize : cellSize){
+    switch cellSize{
+    case .quarterSquare:
+      let width = 100
+      colorView.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+    case .rectangle:
+      colorView.frame = CGRect(x: 8, y: 50, width: 200, height: 100)
+    case .square:
+      colorView.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
+    }
+  }
+  
   var cellGradient : gradient? = nil{
     didSet{
       addGradient()
@@ -43,13 +55,6 @@ class ColorCollectionViewCell: UICollectionViewCell {
       radialLayer.setNeedsDisplay()
       radialLayer.frame = CGRect(x: 0, y: 0, width: colorView.frame.width, height: colorView.frame.height)
       colorView.layer.addSublayer(radialLayer)
-      print(radialLayer.frame)
-      print(radialLayer.bounds)
-      print(radialLayer.center)
-      
-
-      
-      
     }
     else{
       let gradientLayer = CAGradientLayer()

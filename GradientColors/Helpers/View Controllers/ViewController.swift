@@ -41,12 +41,9 @@ class ViewController: UIViewController {
     self.cellShapeView.addGestureRecognizer(cellSizeTapGesture)
   }
   
-
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    let multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
-    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32 + 40
-    collectionViewHeightConstrant.constant = height
+    setCollectionViewHeight()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,7 +74,24 @@ class ViewController: UIViewController {
     case .square:
       currentCellShape = .quarterSquare
     }
+    setCollectionViewHeight()
     colorCollectionView.reloadData()
+  }
+  
+  func setCollectionViewHeight(){
+    var multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
+    
+    switch currentCellShape {
+    case .square:
+      multiplier *= 4
+    case .rectangle:
+      multiplier *= 2
+    case .quarterSquare:
+      multiplier *= 1
+    }
+    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32 + 40
+    
+    collectionViewHeightConstrant.constant = height
   }
 }
 
@@ -99,6 +113,7 @@ extension ViewController : UICollectionViewDataSource{
     cell.clipsToBounds = true
     cell.cellGradient = gradients.allGradients[indexPath.item]
     cell.colorViewOutline = currentShapeOutline
+    cell.setViewSize(cellSize: currentCellShape)
     return cell
   }
   
