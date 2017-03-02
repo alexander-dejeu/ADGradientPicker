@@ -11,8 +11,16 @@ import UIKit
 class cellSizeIndicatorView: UIView {
   
   
+  func clearAllSubviews(){
+    if let layers = self.layer.sublayers {
+      for layer in layers{
+        layer.removeFromSuperlayer()
+      }
+    }
+  }
   
   func drawIndicator(state : cellSize){
+    clearAllSubviews()
     switch state{
     case .square:
       drawSingleSquare()
@@ -45,10 +53,20 @@ class cellSizeIndicatorView: UIView {
   }
   
   func drawSingleSquare(){
-    
+    let bigSquare = CALayer()
+    bigSquare.frame = CGRect(x: 4, y: 4, width: 32, height: 32)
+    bigSquare.backgroundColor = UIColor.clear.cgColor
+    bigSquare.borderWidth = 0.5
+    bigSquare.borderColor = UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0).cgColor
+    self.layer.addSublayer(bigSquare)
   }
   
   func drawRectange(){
-    
+    let rect = CALayer()
+    rect.frame = CGRect(x: 4, y: 12, width: 32, height: 16)
+    rect.backgroundColor = UIColor.clear.cgColor
+    rect.borderWidth = 0.5
+    rect.borderColor = UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0).cgColor
+    self.layer.addSublayer(rect)
   }
 }

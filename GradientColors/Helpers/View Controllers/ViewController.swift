@@ -13,7 +13,7 @@ class ViewController: UIViewController {
   // MARK: - IBOutlets
   @IBOutlet weak var colorCollectionView: UICollectionView!
   @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
-  @IBOutlet weak var colorPreviewShapeView: UIView!
+  @IBOutlet weak var colorPreviewShapeView: cellShapeIndicatorView!
   @IBOutlet weak var cellShapeView: cellSizeIndicatorView!
   
   // MARK: - IBActions
@@ -40,7 +40,9 @@ class ViewController: UIViewController {
     let cellSizeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapForCellSize(_:)))
     self.cellShapeView.addGestureRecognizer(cellSizeTapGesture)
     
-    cellShapeView.drawFourSquares()
+    cellShapeView.drawIndicator(state:  currentCellShape)
+    colorPreviewShapeView.setup()
+    colorPreviewShapeView.drawIndicator(state: currentShapeOutline)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
     case .circle:
       currentShapeOutline = .square
     }
+    colorPreviewShapeView.drawIndicator(state: currentShapeOutline)
     colorCollectionView.reloadData()
   }
   
@@ -76,6 +79,7 @@ class ViewController: UIViewController {
     case .square:
       currentCellShape = .quarterSquare
     }
+    cellShapeView.drawIndicator(state:  currentCellShape)
     setCollectionViewHeight()
     colorCollectionView.reloadData()
     handleTapForColorPreviewShape(_:gestureRecognizer)
