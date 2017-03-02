@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var colorCollectionView: UICollectionView!
   @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
   @IBOutlet weak var colorPreviewShapeView: UIView!
-  @IBOutlet weak var cellShapeView: UIView!
+  @IBOutlet weak var cellShapeView: cellSizeIndicatorView!
   
   // MARK: - IBActions
   @IBAction func selectRandomColor(sender: UIButton){
@@ -39,6 +39,8 @@ class ViewController: UIViewController {
     
     let cellSizeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapForCellSize(_:)))
     self.cellShapeView.addGestureRecognizer(cellSizeTapGesture)
+    
+    cellShapeView.drawFourSquares()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -76,6 +78,7 @@ class ViewController: UIViewController {
     }
     setCollectionViewHeight()
     colorCollectionView.reloadData()
+    handleTapForColorPreviewShape(_:gestureRecognizer)
   }
   
   func setCollectionViewHeight(){
@@ -101,6 +104,7 @@ extension ViewController : UICollectionViewDelegate{
     if let selectedCell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell{
       selectedGradient = selectedCell.cellGradient
     }
+  
     self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
     
   }

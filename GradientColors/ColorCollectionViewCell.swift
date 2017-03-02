@@ -28,15 +28,22 @@ class ColorCollectionViewCell: UICollectionViewCell {
   var colorViewOutline : shapeOutline = .square
   
   func setViewSize(cellSize : cellSize){
+    let topShift = colorTitleLabel.frame.maxY + 8
+    let bottomShift = self.frame.height - colorHexLabel.frame.minY + 8
+    let height = self.frame.height - topShift - bottomShift
+    
     switch cellSize{
-    case .quarterSquare:
-      let width = 100
-      colorView.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+    case .quarterSquare, .square:
+
+      let trueSize = min(height, self.frame.width - 16)
+      let x = (self.frame.width - trueSize) / 2.0
+      colorView.frame = CGRect(x: x, y: topShift, width: trueSize, height: trueSize)
     case .rectangle:
-      colorView.frame = CGRect(x: 8, y: 50, width: 200, height: 100)
-    case .square:
-      colorView.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
+      colorView.frame = CGRect(x: 8, y: topShift, width: self.frame.width - 16, height: height)
     }
+    //TODO : PLS DO NOT DO THIS TRASH
+    addGradient()
+    
   }
   
   var cellGradient : gradient? = nil{
@@ -73,7 +80,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
       colorView.clipsToBounds = true
     }
     else if colorViewOutline == .circle{
-      colorView.addCornerRadiusAnimation(to: colorView.frame.width / 2.0, duration: 0.2)
+      colorView.addCornerRadiusAnimation(to: min(colorView.frame.width / 2.0, colorView.frame.height / 2.0), duration: 0.2)
       colorView.clipsToBounds = true
     }
     

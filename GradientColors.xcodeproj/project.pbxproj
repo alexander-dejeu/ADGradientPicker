@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA171D8D1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA171D8C1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift */; };
+		FA1D18F71E68C618006D3100 /* cellSizeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D18F61E68C618006D3100 /* cellSizeIndicatorView.swift */; };
+		FA1D18F91E68C630006D3100 /* cellShapeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D18F81E68C630006D3100 /* cellShapeIndicatorView.swift */; };
 		FA23B6D61E5F70080056D07E /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23B6D51E5F70080056D07E /* BubbleTransition.swift */; };
 		FA23B6D91E5F72030056D07E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23B6D81E5F72030056D07E /* ViewController.swift */; };
 		FA23B6DB1E5F72320056D07E /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23B6DA1E5F72320056D07E /* FullScreenViewController.swift */; };
@@ -57,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		FA171D8C1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA1D18F61E68C618006D3100 /* cellSizeIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellSizeIndicatorView.swift; sourceTree = "<group>"; };
+		FA1D18F81E68C630006D3100 /* cellShapeIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellShapeIndicatorView.swift; sourceTree = "<group>"; };
 		FA23B6D51E5F70080056D07E /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
 		FA23B6D81E5F72030056D07E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA23B6DA1E5F72320056D07E /* FullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA1D18F51E68C5EA006D3100 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D18F61E68C618006D3100 /* cellSizeIndicatorView.swift */,
+				FA1D18F81E68C630006D3100 /* cellShapeIndicatorView.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
 		FA23B6D41E5F6FF30056D07E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 		FA48D2FE1E562F9700AB69E9 /* GradientColors */ = {
 			isa = PBXGroup;
 			children = (
+				FA1D18F51E68C5EA006D3100 /* CustomElements */,
 				FA23B6DC1E5F9B1A0056D07E /* Resources */,
 				FA23B6D71E5F72030056D07E /* View Controllers */,
 				FA23B6D41E5F6FF30056D07E /* Helpers */,
@@ -371,11 +385,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1D18F91E68C630006D3100 /* cellShapeIndicatorView.swift in Sources */,
 				FA23B6D91E5F72030056D07E /* ViewController.swift in Sources */,
 				FA23B6D61E5F70080056D07E /* BubbleTransition.swift in Sources */,
 				FA48D3001E562F9700AB69E9 /* AppDelegate.swift in Sources */,
 				FA171D8D1E5CFA4F00F46DBD /* ColorCollectionViewCell.swift in Sources */,
 				FA48D32E1E56313400AB69E9 /* Gradients.swift in Sources */,
+				FA1D18F71E68C618006D3100 /* cellSizeIndicatorView.swift in Sources */,
 				FA23B6DB1E5F72320056D07E /* FullScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
