@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var tabBarBackground: UIView!
   // MARK: - IBOutlets
   @IBOutlet weak var colorCollectionView: UICollectionView!
   @IBOutlet weak var collectionViewHeightConstrant: NSLayoutConstraint!
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
     cellShapeView.drawIndicator(state:  currentCellShape)
     colorPreviewShapeView.setup()
     colorPreviewShapeView.drawIndicator(state: currentShapeOutline)
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
