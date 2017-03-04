@@ -150,64 +150,94 @@ class gradients{
   static let winterNeva = gradient(title: winterNevaT, id: winterNevaID, direction: winterNevaDir, colors: winterNevaColors)
   
   // 011 Dusty Grass
-  // TODO: - Look into these TL to BR but ofset :P
+  static let dustyGrassT = "Dusty Grass"
+  static let dustyGrassID = 11
+  static let dustyGrassDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let dustyGrassS1 = UIColor(red: 212.0/255.0, green: 252.0/255.0, blue: 121.0/255.0, alpha: 1)
   static let dustyGrassS2 = UIColor(red: 150.0/255.0, green: 230.0/255.0, blue: 161.0/255.0, alpha: 1)
-  static let dustyGrass : [UIColor] = [dustyGrassS1, dustyGrassS2]
+  static let dustyGrassColors : [UIColor] = [dustyGrassS1, dustyGrassS2]
+  static let dustyGrass = gradient(title: dustyGrassT, id: dustyGrassID, direction: dustyGrassDir, colors: dustyGrassColors)
   
   // 012 Tempting Azure
-  // TODO: - Look into these TL to BR but ofset :P
+  static let temptingAzureT = "Tempting Azure"
+  static let temptingAzureID = 12
+  static let temptingAzureDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let temptingAzureS1 = UIColor(red: 132.0/255.0, green: 250.0/255.0, blue: 176.0/255.0, alpha: 1)
   static let temptingAzureS2 = UIColor(red: 143.0/255.0, green: 211.0/255.0, blue: 161.0/255.0, alpha: 1)
-  static let temptingAzure : [UIColor] = [temptingAzureS1, temptingAzureS2]
+  static let temptingAzureColors : [UIColor] = [temptingAzureS1, temptingAzureS2]
+  static let temptingAzure = gradient(title: temptingAzureT, id: temptingAzureID, direction: temptingAzureDir, colors: temptingAzureColors)
   
   // 013 Heavy Rain
-  // MT to MB
+  static let heavyRainT = "Heavy Rain"
+  static let heavyRainID = 13
+  static let heavyRainDir = direction.middleTopToMiddleBottom
   static let heavyRainS1 = UIColor(red: 226.0/255.0, green: 235.0/255.0, blue: 240.0/255.0, alpha: 1)
   static let heavyRainS2 = UIColor(red: 207.0/255.0, green: 217.0/255.0, blue: 223.0/255.0, alpha: 1)
-  static let heavyRain : [UIColor] = [heavyRainS1, heavyRainS2]
+  static let heavyRainColors : [UIColor] = [heavyRainS1, heavyRainS2]
+  static let heavyRain = gradient(title: heavyRainT, id: heavyRainID, direction: heavyRainDir, colors: heavyRainColors)
   
   // 014 Amy Crisp
-  // TODO: - Look into these TL to BR but ofset :P
+  static let amyCrispT = "Amy Crisp"
+  static let amyCrispID = 14
+  static let amyCrispDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let amyCrispS1 = UIColor(red: 166.0/255.0, green: 192.0/255.0, blue: 254.0/255.0, alpha: 1)
   static let amyCrispS2 = UIColor(red: 246.0/255.0, green: 128.0/255.0, blue: 132.0/255.0, alpha: 1)
-  static let amyCrisp : [UIColor] = [amyCrispS1, amyCrispS2]
+  static let amyCrispColors : [UIColor] = [amyCrispS1, amyCrispS2]
+  static let amyCrisp = gradient(title: amyCrispT, id: amyCrispID, direction: amyCrispDir, colors: amyCrispColors)
   
   // 015 Mean Fruit
-  // TODO: - Look into these TL to BR but ofset :P
+  static let meanFruitT = "Mean Fruit"
+  static let meanFruitID = 15
+  static let meanFruitDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let meanFruitS1 = UIColor(red: 252.0/255.0, green: 203.0/255.0, blue: 144.0/255.0, alpha: 1)
   static let meanFruitS2 = UIColor(red: 213.0/255.0, green: 126.0/255.0, blue: 235.0/255.0, alpha: 1)
-  static let meanFruit : [UIColor] = [meanFruitS1, meanFruitS2]
+  static let meanFruitColors : [UIColor] = [meanFruitS1, meanFruitS2]
+  static let meanFruit = gradient(title: meanFruitT, id: meanFruitID, direction: meanFruitDir, colors: meanFruitColors)
   
   // 016 Light Blue
-  // TODO: - Look into these TL to BR but ofset :P
+  static let lightBlueT = "Light Blue"
+  static let lightBlueID = 16
+  static let lightBlueDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let lightBlueS1 = UIColor(red: 224.0/255.0, green: 195.0/255.0, blue: 252.0/255.0, alpha: 1)
   static let lightBlueS2 = UIColor(red: 142.0/255.0, green: 197.0/255.0, blue: 252.0/255.0, alpha: 1)
-  static let lightBlue : [UIColor] = [lightBlueS1, lightBlueS2]
+  static let lightBlueColors : [UIColor] = [lightBlueS1, lightBlueS2]
+  static let lightBlue = gradient(title: lightBlueT, id: lightBlueID, direction: lightBlueDir, colors: lightBlueColors)
   
   // 017 Ripe Malinka
-  // TODO: - Look into these TL to BR but ofset :P
+  static let ripeMalinkaT = "Ripe Malinka"
+  static let ripeMalinkaID = 17
+  static let ripeMalinkaDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let ripeMalinkaS1 = UIColor(red: 240.0/255.0, green: 147.0/255.0, blue: 251.0/255.0, alpha: 1)
   static let ripeMalinkaS2 = UIColor(red: 245.0/255.0, green: 87.0/255.0, blue: 108.0/255.0, alpha: 1)
-  static let ripeMalinka : [UIColor] = [ripeMalinkaS1, ripeMalinkaS2]
+  static let ripeMalinkaColors : [UIColor] = [ripeMalinkaS1, ripeMalinkaS2]
+  static let ripeMalinka = gradient(title: ripeMalinkaT, id: ripeMalinkaID, direction: ripeMalinkaDir, colors: ripeMalinkaColors)
   
   // 018 Cloudy Knoxville
-  // TODO: - Look into these TL to BR but ofset :P
+  static let cloudyKnoxvilleT = "Cloudy Knoxville"
+  static let cloudyKnoxvilleID = 18
+  static let cloudyKnoxvilleDir = direction.topLeft25PercentDownToBottomRight25PercentUp
   static let cloudyKnoxvilleS1 = UIColor(red: 251.0/255.0, green: 251.0/255.0, blue: 251.0/255.0, alpha: 1)
   static let cloudyKnoxvilleS2 = UIColor(red: 235.0/255.0, green: 237.0/255.0, blue: 238.0/255.0, alpha: 1)
-  static let cloudyKnoxville : [UIColor] = [cloudyKnoxvilleS1, cloudyKnoxvilleS2]
+  static let cloudyKnoxvilleColors : [UIColor] = [cloudyKnoxvilleS1, cloudyKnoxvilleS2]
+  static let cloudyKnoxville = gradient(title: cloudyKnoxvilleT, id: cloudyKnoxvilleID, direction: cloudyKnoxvilleDir, colors: cloudyKnoxvilleColors)
   
   // 019 Malibu Beach
-  // ML to MR
+  static let malibuBeachT = "Malibu Beach"
+  static let malibuBeachID = 19
+  static let malibuBeachDir = direction.middleLeftToMiddleRight
   static let malibuBeachS1 = UIColor(red: 79.0/255.0, green: 172.0/255.0, blue: 254.0/255.0, alpha: 1)
   static let malibuBeachS2 = UIColor(red: 0.0/255.0, green: 242.0/255.0, blue: 254.0/255.0, alpha: 1)
-  static let malibuBeach : [UIColor] = [malibuBeachS1, malibuBeachS2]
+  static let malibuBeachColors : [UIColor] = [malibuBeachS1, malibuBeachS2]
+  static let malibuBeach = gradient(title: malibuBeachT, id: malibuBeachID, direction: malibuBeachDir, colors: malibuBeachColors)
   
   // 020 New Life
-  // ML to MR
+  static let newLifeT = "New Life"
+  static let newLifeID = 20
+  static let newLifeDir = direction.middleLeftToMiddleRight
   static let newLifeS1 = UIColor(red: 67.0/255.0, green: 233.0/255.0, blue: 123.0/255.0, alpha: 1)
   static let newLifeS2 = UIColor(red: 56.0/255.0, green: 249.0/255.0, blue: 215.0/255.0, alpha: 1)
-  static let newLife : [UIColor] = [newLifeS1, newLifeS2]
+  static let newLifeColors : [UIColor] = [newLifeS1, newLifeS2]
+  static let newLife = gradient(title: newLifeT, id: newLifeID, direction: newLifeDir, colors: newLifeColors)
   
   // 021 True Sunset
   // ML to MR
