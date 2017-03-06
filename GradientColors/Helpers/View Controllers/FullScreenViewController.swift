@@ -26,6 +26,15 @@ class FullScreenViewController: UIViewController {
     swipeRight.direction = UISwipeGestureRecognizerDirection.right
     self.view.addGestureRecognizer(swipeRight)
     
+    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeUp.direction = UISwipeGestureRecognizerDirection.up
+    self.view.addGestureRecognizer(swipeUp)
+
+    let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeDown.direction = UISwipeGestureRecognizerDirection.down
+    self.view.addGestureRecognizer(swipeDown)
+
+    
     if !singleFullScreen {
       gradient = gradients.getRandomGradient()
     }

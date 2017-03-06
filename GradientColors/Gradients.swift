@@ -240,10 +240,13 @@ class gradients{
   static let newLife = gradient(title: newLifeT, id: newLifeID, direction: newLifeDir, colors: newLifeColors)
   
   // 021 True Sunset
-  // ML to MR
+  static let trueSunsetT = "True Sunset"
+  static let trueSunsetID = 21
+  static let trueSunsetDir = direction.middleLeftToMiddleRight
   static let trueSunsetS1 = UIColor(red: 250.0/255.0, green: 112.0/255.0, blue: 154.0/255.0, alpha: 1)
   static let trueSunsetS2 = UIColor(red: 254.0/255.0, green: 225.0/255.0, blue: 64.0/255.0, alpha: 1)
-  static let trueSunset : [UIColor] = [trueSunsetS1, trueSunsetS2]
+  static let trueSunsetColors : [UIColor] = [trueSunsetS1, trueSunsetS2]
+  static let trueSunset = gradient(title: trueSunsetT, id: trueSunsetID, direction: trueSunsetDir, colors: trueSunsetColors)
   
   // 022 Morpheus Den
   // MT to MB
@@ -716,8 +719,7 @@ class gradients{
   
 //  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   
-  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, arielleSmile]
-  
+  static let allGradients : [gradient] = [warmFlame, nightFade, springWarmth, juicyPeach, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass, temptingAzure, heavyRain, amyCrisp, meanFruit, lightBlue, ripeMalinka, cloudyKnoxville, malibuBeach, trueSunset]
   
   static func getRandomGradient() -> gradient{
     let randomIndex = Int(arc4random_uniform(UInt32(self.allGradients.count)))

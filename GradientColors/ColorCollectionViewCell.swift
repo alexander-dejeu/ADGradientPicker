@@ -26,13 +26,14 @@ class ColorCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var colorHexLabel : UILabel!
   
   var colorViewOutline : shapeOutline = .square
+  var colorViewSize : cellSize = .quarterSquare
   
-  func setViewSize(cellSize : cellSize){
+  func setViewSize(){
     let topShift = colorTitleLabel.frame.maxY + 8
     let bottomShift = self.frame.height - colorHexLabel.frame.minY + 8
     let height = self.frame.height - topShift - bottomShift
     
-    switch cellSize{
+    switch colorViewSize{
     case .quarterSquare, .square:
 
       let trueSize = min(height, self.frame.width - 16)

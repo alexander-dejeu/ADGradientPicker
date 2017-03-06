@@ -44,7 +44,6 @@ class ViewController: UIViewController {
     cellShapeView.drawIndicator(state:  currentCellShape)
     colorPreviewShapeView.setup()
     colorPreviewShapeView.drawIndicator(state: currentShapeOutline)
-
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -83,24 +82,29 @@ class ViewController: UIViewController {
     }
     cellShapeView.drawIndicator(state:  currentCellShape)
     setCollectionViewHeight()
+    colorPreviewShapeView.drawIndicator(state: currentShapeOutline)
     colorCollectionView.reloadData()
-    handleTapForColorPreviewShape(_:gestureRecognizer)
   }
   
   func setCollectionViewHeight(){
     var multiplier = (colorCollectionView.numberOfItems(inSection: 0) / 2) + colorCollectionView.numberOfItems(inSection: 0) % 2
     
+    var cellHeight : CGFloat = 100
+    
     switch currentCellShape {
     case .square:
       multiplier *= 4
+      cellHeight = colorCollectionView.frame.width - CGFloat(16.0)
     case .rectangle:
       multiplier *= 2
+      cellHeight = (colorCollectionView.frame.height - 16.0) / 2.0
     case .quarterSquare:
       multiplier *= 1
+      cellHeight = colorCollectionView.frame.width / 2.0 - CGFloat(16.0)
     }
-    let height = CGFloat(multiplier) * ((colorCollectionView.cellForItem(at: IndexPath(item: 0, section: 0))?.bounds.height)! + 12) + 32 + 40
+    let collectionViewHeight = CGFloat(multiplier) * (cellHeight + 12) + 32 + 40
     
-    collectionViewHeightConstrant.constant = height
+    collectionViewHeightConstrant.constant = collectionViewHeight
   }
 }
 
@@ -123,7 +127,8 @@ extension ViewController : UICollectionViewDataSource{
     cell.clipsToBounds = true
     cell.cellGradient = gradients.allGradients[indexPath.item]
     cell.colorViewOutline = currentShapeOutline
-    cell.setViewSize(cellSize: currentCellShape)
+    cell.colorViewSize = currentCellShape
+    cell.setViewSize()
     return cell
   }
   
