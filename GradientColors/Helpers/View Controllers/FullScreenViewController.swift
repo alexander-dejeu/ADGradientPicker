@@ -18,22 +18,7 @@ class FullScreenViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.layer.addSublayer(gradientLayer)
-    
-    let tapTouchGesture = UITapGestureRecognizer(target: self, action: #selector(setRandomGradient(_:)))
-    self.view.addGestureRecognizer(tapTouchGesture)
-    
-    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-    swipeRight.direction = UISwipeGestureRecognizerDirection.right
-    self.view.addGestureRecognizer(swipeRight)
-    
-    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-    swipeUp.direction = UISwipeGestureRecognizerDirection.up
-    self.view.addGestureRecognizer(swipeUp)
-
-    let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-    swipeDown.direction = UISwipeGestureRecognizerDirection.down
-    self.view.addGestureRecognizer(swipeDown)
-
+    addAllGestureRecognizers()
     
     if !singleFullScreen {
       gradient = gradients.getRandomGradient()
@@ -52,6 +37,24 @@ class FullScreenViewController: UIViewController {
     }
   }
   
+  func addAllGestureRecognizers(){
+    let tapTouchGesture = UITapGestureRecognizer(target: self, action: #selector(setRandomGradient(_:)))
+    self.view.addGestureRecognizer(tapTouchGesture)
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeRight.direction = UISwipeGestureRecognizerDirection.right
+    self.view.addGestureRecognizer(swipeRight)
+    
+    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeUp.direction = UISwipeGestureRecognizerDirection.up
+    self.view.addGestureRecognizer(swipeUp)
+    
+    let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+    swipeDown.direction = UISwipeGestureRecognizerDirection.down
+    self.view.addGestureRecognizer(swipeDown)
+
+  }
+  
   func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){
     switch gestureRecognizer.direction{
     case UISwipeGestureRecognizerDirection.right:
@@ -60,11 +63,20 @@ class FullScreenViewController: UIViewController {
 //      self.dis
     case UISwipeGestureRecognizerDirection.up:
       print("up")
+      addDetailCoverView()
     case UISwipeGestureRecognizerDirection.down:
       print("hide it")
     default:
       print("Yeah some strange swipe")
     }
+  }
+  
+  func addDetailCoverView(){
+    let backgroundView : UIView = UIView()
+    backgroundView.backgroundColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 0.05)
+    backgroundView.frame = CGRect(x: 0, y: self.view.frame.height / 3 , width: self.view.frame.width, height: self.view.frame.height/3*2)
+    
+    self.view.addSubview(backgroundView)
   }
   
 }
