@@ -13,6 +13,7 @@ class FullScreenViewController: UIViewController {
   let gradientLayer = CAGradientLayer()
   var gradient : gradient? = nil
   var singleFullScreen = false
+  let backgroundView : UIView = UIView()
   
   //MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -52,6 +53,8 @@ class FullScreenViewController: UIViewController {
     let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
     swipeDown.direction = UISwipeGestureRecognizerDirection.down
     self.view.addGestureRecognizer(swipeDown)
+    
+    addDetailCoverView()
 
   }
   
@@ -63,19 +66,29 @@ class FullScreenViewController: UIViewController {
 //      self.dis
     case UISwipeGestureRecognizerDirection.up:
       print("up")
-      addDetailCoverView()
+      UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
+                     animations: {
+                      self.backgroundView.center.y -= self.view.bounds.height
+      }, 
+                     completion: nil
+      )
     case UISwipeGestureRecognizerDirection.down:
       print("hide it")
+      UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
+                     animations: {
+                      self.backgroundView.center.y += self.view.bounds.height
+      },
+                     completion: nil
+      )
     default:
       print("Yeah some strange swipe")
     }
   }
   
   func addDetailCoverView(){
-    let backgroundView : UIView = UIView()
     backgroundView.backgroundColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 0.05)
     backgroundView.frame = CGRect(x: 0, y: self.view.frame.height / 3 , width: self.view.frame.width, height: self.view.frame.height/3*2)
-    
+    backgroundView.center.y  += view.bounds.height
     self.view.addSubview(backgroundView)
   }
   
