@@ -93,15 +93,16 @@ class ViewController: UIViewController {
     
     switch currentCellShape {
     case .square:
-      multiplier *= 4
+      multiplier *= 2
       cellHeight = colorCollectionView.frame.width - CGFloat(16.0)
     case .rectangle:
       multiplier *= 2
-      cellHeight = (colorCollectionView.frame.height - 16.0) / 2.0
+      cellHeight = (colorCollectionView.frame.width - 16.0) / 2.0
     case .quarterSquare:
       multiplier *= 1
       cellHeight = colorCollectionView.frame.width / 2.0 - CGFloat(16.0)
     }
+    print("Lmao the cell height is: \(cellHeight)")
     let collectionViewHeight = CGFloat(multiplier) * (cellHeight + 12) + 32 + 40
     
     collectionViewHeightConstrant.constant = collectionViewHeight
