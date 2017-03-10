@@ -32,6 +32,7 @@ class FullScreenViewController: UIViewController {
     contentPickerView.dataSource = self
     
     self.view.layer.addSublayer(gradientLayer)
+    
     addAllGestureRecognizers()
     
     if !singleFullScreen {
@@ -55,10 +56,12 @@ class FullScreenViewController: UIViewController {
   
   func addAllGestureRecognizers(){
     let tapTouchGesture = UITapGestureRecognizer(target: self, action: #selector(setRandomGradient(_:)))
+    tapTouchGesture.delegate  = self
     self.view.addGestureRecognizer(tapTouchGesture)
     
     let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
     swipeRight.direction = UISwipeGestureRecognizerDirection.right
+    swipeRight.delegate  = self
     self.view.addGestureRecognizer(swipeRight)
     
     let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
@@ -75,26 +78,29 @@ class FullScreenViewController: UIViewController {
   
   func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){
     switch gestureRecognizer.direction{
+      
     case UISwipeGestureRecognizerDirection.right:
-      print("right")
       self.dismiss(animated: true, completion: nil)
-    //      self.dis
+      
     case UISwipeGestureRecognizerDirection.up:
       print("up")
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
-                     animations: {
-                      self.backgroundView.center.y -= self.view.bounds.height
-      },
-                     completion: nil
-      )
+      if self.backgroundView.center.y >= self.view.bounds.height {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
+                       animations: {
+                        self.backgroundView.center.y -= self.view.bounds.height
+        },
+                       completion: nil
+        )
+      }
     case UISwipeGestureRecognizerDirection.down:
-      print("hide it")
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
-                     animations: {
-                      self.backgroundView.center.y += self.view.bounds.height
-      },
-                     completion: nil
-      )
+      if self.backgroundView.center.y < self.view.bounds.height{
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
+                       animations: {
+                        self.backgroundView.center.y += self.view.bounds.height
+        },
+                       completion: nil
+        )
+      }
     default:
       print("Yeah some strange swipe")
     }
@@ -108,6 +114,7 @@ class FullScreenViewController: UIViewController {
     colorTitleLabel.frame = CGRect(x: 0, y: 24, width: backgroundView.frame.width, height: 50)
     colorTitleLabel.text = gradient?.title
     colorTitleLabel.font = UIFont(name: "Montserrat-Bold", size: 40.0)
+    colorTitleLabel.minimumScaleFactor = 0.5
     colorTitleLabel.textColor = .white
     colorTitleLabel.textAlignment = .center
     
@@ -141,6 +148,15 @@ class FullScreenViewController: UIViewController {
     pasteboard.string = "Alex is a beast"
   }
   
+}
+
+extension FullScreenViewController : UIGestureRecognizerDelegate{
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    if touch.view == backgroundView{
+      return false
+    }
+    return true
+  }
 }
 
 extension FullScreenViewController : AKPickerViewDataSource{

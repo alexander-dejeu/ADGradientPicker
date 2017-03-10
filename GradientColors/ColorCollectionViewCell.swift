@@ -44,7 +44,6 @@ class ColorCollectionViewCell: UICollectionViewCell {
     }
     //TODO : PLS DO NOT DO THIS TRASH
     addGradient()
-    
   }
   
   var cellGradient : gradient? = nil{
