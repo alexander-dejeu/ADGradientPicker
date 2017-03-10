@@ -117,6 +117,7 @@ class FullScreenViewController: UIViewController {
     copyButton.backgroundColor = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.1)
     copyButton.setTitle("copy to clipboard", for: .normal)
     copyButton.setTitleColor(.white, for: .normal)
+    copyButton.addTarget(self, action: #selector(FullScreenViewController.copyTextToClipboard), for: .touchUpInside)
     
     
     contentPickerView.frame = CGRect(x: 0, y: backgroundView.frame.height - 55 - 40, width: backgroundView.frame.width, height: 40)
@@ -126,13 +127,18 @@ class FullScreenViewController: UIViewController {
     contentPickerView.highlightedTextColor = .black
     contentPickerView.interitemSpacing = 24.0
     contentPickerView.pickerViewStyle = .wheel
-//    contentPickerView.maskDisabled = false
+
     contentPickerView.reloadData()
     
     self.view.addSubview(backgroundView)
     backgroundView.addSubview(colorTitleLabel)
     backgroundView.addSubview(copyButton)
     backgroundView.addSubview(contentPickerView)
+  }
+  
+  func copyTextToClipboard(){
+    let pasteboard = UIPasteboard.general
+    pasteboard.string = "Alex is a beast"
   }
   
 }
