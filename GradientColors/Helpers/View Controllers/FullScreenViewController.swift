@@ -8,18 +8,29 @@
 
 import UIKit
 
-class FullScreenViewController: UIViewController {
+enum gradientContentState : String{
+  case hex = "Hex"
+  case rgb = "RGB"
+  case swiftCode = "Swift 3 Code"
+  case adCode = "ADGradients Code"
+}
 
+class FullScreenViewController: UIViewController {
+  
   let gradientLayer = CAGradientLayer()
   var gradient : gradient? = nil
   var singleFullScreen = false
   let backgroundView : UIView = UIView()
   let colorTitleLabel : UILabel = UILabel()
   let contentLabel : UILabel = UILabel()
+  let contentPickerView : AKPickerView = AKPickerView()
   
   //MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    contentPickerView.delegate = self
+    contentPickerView.dataSource = self
+    
     self.view.layer.addSublayer(gradientLayer)
     addAllGestureRecognizers()
     
@@ -36,7 +47,9 @@ class FullScreenViewController: UIViewController {
       self.dismiss(animated: true, completion: nil)
     }
     else{
-      gradientLayer.colors = gradients.getRandomGradient().colors.map {$0.cgColor}
+      gradient = gradients.getRandomGradient()
+      gradientLayer.colors = gradient?.colors.map {$0.cgColor}
+      colorTitleLabel.text = gradient?.title
     }
   }
   
@@ -57,7 +70,7 @@ class FullScreenViewController: UIViewController {
     self.view.addGestureRecognizer(swipeDown)
     
     addDetailCoverView()
-
+    
   }
   
   func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer){
@@ -65,13 +78,13 @@ class FullScreenViewController: UIViewController {
     case UISwipeGestureRecognizerDirection.right:
       print("right")
       self.dismiss(animated: true, completion: nil)
-//      self.dis
+    //      self.dis
     case UISwipeGestureRecognizerDirection.up:
       print("up")
       UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
                      animations: {
                       self.backgroundView.center.y -= self.view.bounds.height
-      }, 
+      },
                      completion: nil
       )
     case UISwipeGestureRecognizerDirection.down:
@@ -98,8 +111,51 @@ class FullScreenViewController: UIViewController {
     colorTitleLabel.textColor = .white
     colorTitleLabel.textAlignment = .center
     
+    let copyButton : UIButton = UIButton()
+    copyButton.frame = CGRect(x: 0, y: backgroundView.frame.height - 55, width: backgroundView.frame.width, height: 55)
+    copyButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 30.0)
+    copyButton.backgroundColor = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.1)
+    copyButton.setTitle("copy to clipboard", for: .normal)
+    copyButton.setTitleColor(.white, for: .normal)
+    
+    
+    contentPickerView.frame = CGRect(x: 0, y: backgroundView.frame.height - 55 - 40, width: backgroundView.frame.width, height: 40)
+    contentPickerView.font = UIFont(name: "Montserrat-Regular", size: 25.0)!
+    contentPickerView.textColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1.0)
+    contentPickerView.highlightedFont = UIFont(name: "Montserrat-Regular", size: 25.0)!
+    contentPickerView.highlightedTextColor = .black
+    contentPickerView.interitemSpacing = 24.0
+    contentPickerView.pickerViewStyle = .wheel
+//    contentPickerView.maskDisabled = false
+    contentPickerView.reloadData()
+    
     self.view.addSubview(backgroundView)
     backgroundView.addSubview(colorTitleLabel)
+    backgroundView.addSubview(copyButton)
+    backgroundView.addSubview(contentPickerView)
   }
   
+}
+
+extension FullScreenViewController : AKPickerViewDataSource{
+  func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
+    return 4
+  }
+  func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
+    switch item {
+    case 0: return "Hex"
+    case 1: return "RGB"
+    case 2: return "Swift 3 Code"
+    case 3: return "ADGradients"
+    default : return "Bad Code"
+    }
+  }
+}
+
+extension FullScreenViewController : AKPickerViewDelegate {
+  func pickerView(_ pickerView: AKPickerView, didSelectItem item: Int) {
+    print("yeah we selected to: \(item)")
+    print("Selected cell is \(pickerView.selectedItem)")
+    
+  }
 }
