@@ -40,6 +40,8 @@ class FullScreenViewController: UIViewController {
     }
     gradientLayer.frame = self.view.bounds
     gradientLayer.colors = gradient?.colors.map {$0.cgColor}
+    colorTitleLabel.text = gradient?.title
+    
   }
   
   //MARK: - Helpers
@@ -152,7 +154,7 @@ class FullScreenViewController: UIViewController {
 
 extension FullScreenViewController : UIGestureRecognizerDelegate{
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-    if touch.view == backgroundView{
+    if touch.view == backgroundView || (touch.view?.isDescendant(of: backgroundView))!{
       return false
     }
     return true

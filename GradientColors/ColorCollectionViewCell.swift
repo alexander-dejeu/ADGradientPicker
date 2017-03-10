@@ -30,16 +30,20 @@ class ColorCollectionViewCell: UICollectionViewCell {
   
   func setViewSize(){
     let topShift = colorTitleLabel.frame.maxY + 8
-    let bottomShift = self.frame.height - colorHexLabel.frame.minY + 8
+    let bottomShift = (self.frame.height - colorHexLabel.frame.minY) + 8
     let height = self.frame.height - topShift - bottomShift
     
     switch colorViewSize{
     case .quarterSquare, .square:
 
       let trueSize = min(height, self.frame.width - 16)
+      print("SQUARES")
+      print("Cell size is : \(trueSize)")
       let x = (self.frame.width - trueSize) / 2.0
       colorView.frame = CGRect(x: x, y: topShift, width: trueSize, height: trueSize)
     case .rectangle:
+      print("RECTS")
+      print("Cell size is : \(height)")
       colorView.frame = CGRect(x: 8, y: topShift, width: self.frame.width - 16, height: height)
     }
     //TODO : PLS DO NOT DO THIS TRASH
