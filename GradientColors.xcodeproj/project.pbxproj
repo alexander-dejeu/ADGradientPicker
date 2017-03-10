@@ -38,6 +38,7 @@
 		FA48D3151E562F9700AB69E9 /* GradientColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D3141E562F9700AB69E9 /* GradientColorsTests.swift */; };
 		FA48D3201E562F9800AB69E9 /* GradientColorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D31F1E562F9800AB69E9 /* GradientColorsUITests.swift */; };
 		FA48D32E1E56313400AB69E9 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48D32D1E56313400AB69E9 /* Gradients.swift */; };
+		FA7940D31E72648A008751FE /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7940D21E72648A008751FE /* AKPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		FA48D31F1E562F9800AB69E9 /* GradientColorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientColorsUITests.swift; sourceTree = "<group>"; };
 		FA48D3211E562F9800AB69E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA48D32D1E56313400AB69E9 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		FA7940D21E72648A008751FE /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				FA23B6D51E5F70080056D07E /* BubbleTransition.swift */,
+				FA7940D21E72648A008751FE /* AKPickerView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				FA48D32E1E56313400AB69E9 /* Gradients.swift in Sources */,
 				FA1D18F71E68C618006D3100 /* cellSizeIndicatorView.swift in Sources */,
 				FA23B6DB1E5F72320056D07E /* FullScreenViewController.swift in Sources */,
+				FA7940D31E72648A008751FE /* AKPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

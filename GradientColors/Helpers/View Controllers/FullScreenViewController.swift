@@ -14,6 +14,8 @@ class FullScreenViewController: UIViewController {
   var gradient : gradient? = nil
   var singleFullScreen = false
   let backgroundView : UIView = UIView()
+  let colorTitleLabel : UILabel = UILabel()
+  let contentLabel : UILabel = UILabel()
   
   //MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -66,7 +68,7 @@ class FullScreenViewController: UIViewController {
 //      self.dis
     case UISwipeGestureRecognizerDirection.up:
       print("up")
-      UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
+      UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
                      animations: {
                       self.backgroundView.center.y -= self.view.bounds.height
       }, 
@@ -74,7 +76,7 @@ class FullScreenViewController: UIViewController {
       )
     case UISwipeGestureRecognizerDirection.down:
       print("hide it")
-      UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
+      UIView.animate(withDuration: 0.3, delay: 0.0, options: [],
                      animations: {
                       self.backgroundView.center.y += self.view.bounds.height
       },
@@ -89,7 +91,15 @@ class FullScreenViewController: UIViewController {
     backgroundView.backgroundColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 0.05)
     backgroundView.frame = CGRect(x: 0, y: self.view.frame.height / 3 , width: self.view.frame.width, height: self.view.frame.height/3*2)
     backgroundView.center.y  += view.bounds.height
+    
+    colorTitleLabel.frame = CGRect(x: 0, y: 24, width: backgroundView.frame.width, height: 50)
+    colorTitleLabel.text = gradient?.title
+    colorTitleLabel.font = UIFont(name: "Montserrat-Bold", size: 40.0)
+    colorTitleLabel.textColor = .white
+    colorTitleLabel.textAlignment = .center
+    
     self.view.addSubview(backgroundView)
+    backgroundView.addSubview(colorTitleLabel)
   }
   
 }
