@@ -164,32 +164,30 @@ class FullScreenViewController: UIViewController {
     //Hex
     switch index{
     case 0:
-      var hexString = ""
-      let colors : [UIColor] = (gradient?.colors)!
-      for i in 0..<colors.count {
-        if i == 0{
-          hexString += colors[i].getHexValue()
-        }
-        else{
-          hexString += "\n\(colors[i].getHexValue())"
-        }
-      }
-      contentLabel.text = hexString
+      contentLabel.text = gradient?.getColorHexStringRep()
     case 1:
-      print("yeah")
+      contentLabel.text = gradient?.getColorRGBStringRep()
     case 2:
-      print("yeah")
+      contentLabel.text = gradient?.getSwift3CodeStringRep()
     case 3:
-      print("yeah")
+      contentLabel.text = gradient?.getADGradientsCodeStringRep()
     default:
       print("Well shit")
     }
     
     let rgbString = "color 1 : RGB(202, 210, 102)\ncolor 2: RGB(xyz, yze, wuw)\n\ndirection: left to right"
-    let swiftString = "xyz"
-    let ADGradientCode = "One line <3"
-    contentLabel.sizeToFit()
-    contentLabel.textAlignment = .center
+    switch index{
+    case 0, 1:
+      contentLabel.font = UIFont(name: "Montserrat-Regular", size: 30.0)
+      contentLabel.sizeToFit()
+      contentLabel.textAlignment = .center
+    case 2, 3:
+      contentLabel.font = UIFont(name: "Montserrat-Regular", size: 16.0)
+      contentLabel.textAlignment = .left
+      contentLabel.sizeToFit()
+    default:
+      print("Well shit")
+    }
     contentLabel.frame = CGRect(x: contentLabel.frame.minX, y: contentLabel.frame.minY, width: self.view.frame.width - 32, height: contentLabel.frame.height)
   }
   

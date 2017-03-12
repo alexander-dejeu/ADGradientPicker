@@ -43,6 +43,61 @@ struct gradient {
   var id : Int
   var direction : direction
   var colors : [UIColor]
+  
+  func getColorHexStringRep() -> String{
+    var hexString = ""
+    for i in 0..<colors.count {
+      if i == 0{
+        hexString += colors[i].getHexValue()
+      }
+      else{
+        hexString += "\n\(colors[i].getHexValue())"
+      }
+    }
+    return hexString
+  }
+  
+  func getColorRGBStringRep() -> String{
+    var rgbString = ""
+    for i in 0..<colors.count {
+      var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+      colors[i].getRed(&r, green: &g, blue: &b, alpha: &a)
+      print("red: \(r*255.0), green: \(g*255.0), blue: \(b*255.0)")
+      
+      let rgb = "RGB(\(Int(r*255.0)),\(Int(g*255.0)),\(Int(b*255.0)))"
+      if i == 0{
+        rgbString += rgb
+      }
+      else{
+        rgbString += "\n\(rgb)"
+      }
+    }
+    return rgbString
+  }
+  
+  func getSwift3CodeStringRep() -> String {
+    var swiftCodeString = ""
+    if direction == .radial {
+      swiftCodeString = "sorry, Swift does not natively support radial gradients😢 \nbut ADGradients does 😏 give it a shot 💕"
+    }
+    else{
+      swiftCodeString += "let gradientLayer = CAGradientLayer()\n"
+      swiftCodeString += "gradientLayer.frame = yourView.bounds\n"
+      swiftCodeString += ""
+//      gradientLayer.colors = colors.map {$0.cgColor}
+      
+//      let startAndEndLocations = direction.getStartEndPoints()
+//      gradientLayer.startPoint = (startAndEndLocations?[0])!
+//      gradientLayer.endPoint = (startAndEndLocations?[1])!
+      
+//      yourView.layer.addSublayer(gradientLayer)
+    }
+    return swiftCodeString
+  }
+  
+  func getADGradientsCodeStringRep() -> String{
+    return "Peep this sexy one liner"
+  }
 }
 
 class gradients{
@@ -757,7 +812,6 @@ class RadialGradientLayer: CALayer {
   }
   
   init(center:CGPoint,radius:CGFloat,colors:[CGColor]){
-    
     self.center = center
     self.radius = radius
     self.colors = colors
@@ -767,9 +821,7 @@ class RadialGradientLayer: CALayer {
   }
   
   required init(coder aDecoder: NSCoder) {
-    
     super.init()
-    
   }
   
   var center:CGPoint = CGPoint(x: 50,y: 50)
@@ -789,46 +841,3 @@ class RadialGradientLayer: CALayer {
   }
   
 }
-
-//class RadialGradientLayer: CALayer {
-//  
-//  var center: CGPoint {
-//    return CGPoint(x: bounds.width/2, y: bounds.height/2)
-//  }
-//  
-//  var radius: CGFloat {
-//    return (bounds.width + bounds.height)/2
-//  }
-//  
-//  var colors: [UIColor] = [UIColor.black, UIColor.lightGray] {
-//    didSet {
-//      setNeedsDisplay()
-//    }
-//  }
-//  
-//  var cgColors: [CGColor] {
-//    return colors.map({ (color) -> CGColor in
-//      return color.cgColor
-//    })
-//  }
-//  
-//  override init() {
-//    super.init()
-//    needsDisplayOnBoundsChange = true
-//  }
-//  
-//  required init(coder aDecoder: NSCoder) {
-//    super.init()
-//  }
-//  
-//  override func draw(in ctx: CGContext) {
-//    ctx.saveGState()
-//    let colorSpace = CGColorSpaceCreateDeviceRGB()
-//    let locations: [CGFloat] = [0.0, 1.0]
-//    guard let gradient = CGGradient(colorsSpace: colorSpace, colors: cgColors as CFArray, locations: locations) else {
-//      return
-//    }
-//    ctx.drawRadialGradient(gradient, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions(rawValue: 0))
-//  }
-//  
-//}
