@@ -41,7 +41,7 @@ class FullScreenViewController: UIViewController {
     gradientLayer.frame = self.view.bounds
     gradientLayer.colors = gradient?.colors.map {$0.cgColor}
     colorTitleLabel.text = gradient?.title
-    
+    updateContentLabel(index : 0)
   }
   
   //MARK: - Helpers
@@ -53,6 +53,7 @@ class FullScreenViewController: UIViewController {
       gradient = gradients.getRandomGradient()
       gradientLayer.colors = gradient?.colors.map {$0.cgColor}
       colorTitleLabel.text = gradient?.title
+      updateContentLabel(index: contentPickerView.selectedItem)
     }
   }
   
@@ -120,6 +121,14 @@ class FullScreenViewController: UIViewController {
     colorTitleLabel.textColor = .white
     colorTitleLabel.textAlignment = .center
     
+    contentLabel.frame = CGRect(x: 16, y: 32 + colorTitleLabel.bounds.maxY, width: backgroundView.frame.width-32, height: 50)
+    contentLabel.font = UIFont(name: "Montserrat-Regular", size: 30.0)
+    contentLabel.minimumScaleFactor = 0.5
+    contentLabel.numberOfLines = 0
+    contentLabel.lineBreakMode = .byWordWrapping
+    contentLabel.textColor = .white
+    contentLabel.textAlignment = .center
+    
     let copyButton : UIButton = UIButton()
     copyButton.frame = CGRect(x: 0, y: backgroundView.frame.height - 55, width: backgroundView.frame.width, height: 55)
     copyButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 30.0)
@@ -143,11 +152,45 @@ class FullScreenViewController: UIViewController {
     backgroundView.addSubview(colorTitleLabel)
     backgroundView.addSubview(copyButton)
     backgroundView.addSubview(contentPickerView)
+    backgroundView.addSubview(contentLabel)
   }
   
   func copyTextToClipboard(){
     let pasteboard = UIPasteboard.general
     pasteboard.string = "Alex is a beast"
+  }
+  
+  func updateContentLabel(index : Int){
+    //Hex
+    switch index{
+    case 0:
+      var hexString = ""
+      let colors : [UIColor] = (gradient?.colors)!
+      for i in 0..<colors.count {
+        if i == 0{
+          hexString += colors[i].getHexValue()
+        }
+        else{
+          hexString += "\n\(colors[i].getHexValue())"
+        }
+      }
+      contentLabel.text = hexString
+    case 1:
+      print("yeah")
+    case 2:
+      print("yeah")
+    case 3:
+      print("yeah")
+    default:
+      print("Well shit")
+    }
+    
+    let rgbString = "color 1 : RGB(202, 210, 102)\ncolor 2: RGB(xyz, yze, wuw)\n\ndirection: left to right"
+    let swiftString = "xyz"
+    let ADGradientCode = "One line <3"
+    contentLabel.sizeToFit()
+    contentLabel.textAlignment = .center
+    contentLabel.frame = CGRect(x: contentLabel.frame.minX, y: contentLabel.frame.minY, width: self.view.frame.width - 32, height: contentLabel.frame.height)
   }
   
 }
@@ -180,6 +223,6 @@ extension FullScreenViewController : AKPickerViewDelegate {
   func pickerView(_ pickerView: AKPickerView, didSelectItem item: Int) {
     print("yeah we selected to: \(item)")
     print("Selected cell is \(pickerView.selectedItem)")
-    
+    updateContentLabel(index : item)
   }
 }
