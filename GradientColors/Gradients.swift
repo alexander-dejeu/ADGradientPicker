@@ -81,16 +81,39 @@ struct gradient {
       swiftCodeString = "sorry, Swift does not natively support radial gradients😢 \nbut ADGradients does 😏 give it a shot 💕"
     }
     else{
+      swiftCodeString += "// Add CAGradientLayer\n"
       swiftCodeString += "let gradientLayer = CAGradientLayer()\n"
-      swiftCodeString += "gradientLayer.frame = yourView.bounds\n"
-      swiftCodeString += ""
-//      gradientLayer.colors = colors.map {$0.cgColor}
+      swiftCodeString += "gradientLayer.frame = yourView.bounds\n\n"
+      swiftCodeString += "// Colors for the gradient\n"
       
-//      let startAndEndLocations = direction.getStartEndPoints()
+      var cgColorArray = "["
+      for i in 0..<colors.count {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        colors[i].getRed(&r, green: &g, blue: &b, alpha: &a)
+        swiftCodeString += "let cgColor\(i+1) = UIColor(red: \(r*255.0)/255.0, green: \(g*255.0)/255.0, blue: \(b*255.0)/255.0, alpha: \(a)).cgColor\n"
+        if i == colors.count - 1{
+          cgColorArray += "cgColor\(i+1)]"
+        }
+        else{
+           cgColorArray += "cgColor\(i+1), "
+        }
+      }
+      
+      let startAndEndLocations = direction.getStartEndPoints()
+      swiftCodeString += "gradientLayer.colors = \(cgColorArray)\n\n"
+      swiftCodeString += "// Direction for the gradient\n"
+      swiftCodeString += "gradientLayer.startPoint = CGPoint(x: \(startAndEndLocations[0].x), y: \(startAndEndLocations[0].y)\n"
+      swiftCodeString += "gradientLayer.endPoint = CGPoint(x: \(startAndEndLocations[1].x), y: \(startAndEndLocations[1].y)\n\n"
+      
+      swiftCodeString += "yourView.layer.addSublayer(gradientLayer)"
+      
+      
+      
+      print(startAndEndLocations[1].x)
 //      gradientLayer.startPoint = (startAndEndLocations?[0])!
-//      gradientLayer.endPoint = (startAndEndLocations?[1])!
+//      gradientLayer.endPoint = (startAndEndLocations?[1])! CGPoint(x: 0.5, y: 0)
       
-//      yourView.layer.addSublayer(gradientLayer)
+//
     }
     return swiftCodeString
   }

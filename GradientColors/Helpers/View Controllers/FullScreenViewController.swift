@@ -157,7 +157,7 @@ class FullScreenViewController: UIViewController {
   
   func copyTextToClipboard(){
     let pasteboard = UIPasteboard.general
-    pasteboard.string = "Alex is a beast"
+    pasteboard.string = contentLabel.text
   }
   
   func updateContentLabel(index : Int){
