@@ -72,9 +72,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
-                                                            <rect key="frame" x="30.5" y="31" width="115" height="115"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26U-bt-CB1">
+                                                            <rect key="frame" x="8" y="31" width="159" height="113"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="### Color Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yA7-6q-hIx">
                                                             <rect key="frame" x="2" y="8" width="171" height="15"/>
@@ -93,11 +93,15 @@
                                                 <color key="backgroundColor" red="0.99545454545454548" green="0.99090909090909096" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="yA7-6q-hIx" firstAttribute="top" secondItem="kwI-6h-NIS" secondAttribute="top" constant="8" id="3jC-bS-YXE"/>
+                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="8" id="5aC-nS-jr5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="26U-bt-CB1" secondAttribute="trailing" constant="8" id="I7a-oG-C4g"/>
                                                     <constraint firstItem="izu-Pm-aXo" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="PW9-CQ-Yrd"/>
                                                     <constraint firstAttribute="trailing" secondItem="yA7-6q-hIx" secondAttribute="trailing" constant="2" id="Z6M-NR-4sb"/>
                                                     <constraint firstItem="yA7-6q-hIx" firstAttribute="leading" secondItem="kwI-6h-NIS" secondAttribute="leading" constant="2" id="g1Z-We-JDT"/>
                                                     <constraint firstAttribute="trailing" secondItem="izu-Pm-aXo" secondAttribute="trailing" constant="2" id="utC-GE-yUr"/>
                                                     <constraint firstAttribute="bottom" secondItem="izu-Pm-aXo" secondAttribute="bottom" constant="8" id="vbh-ip-Lbm"/>
+                                                    <constraint firstItem="26U-bt-CB1" firstAttribute="top" secondItem="yA7-6q-hIx" secondAttribute="bottom" constant="8" id="vyq-pX-2ZC"/>
+                                                    <constraint firstItem="izu-Pm-aXo" firstAttribute="top" secondItem="26U-bt-CB1" secondAttribute="bottom" constant="8" id="zrq-sU-uAD"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="colorHexLabel" destination="izu-Pm-aXo" id="2Gx-pW-8O0"/>

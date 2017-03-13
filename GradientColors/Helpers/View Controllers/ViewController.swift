@@ -112,6 +112,7 @@ extension ViewController : UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     singleFullScreen = true
     if let selectedCell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell{
+      print(selectedCell.colorViewSize)
         selectedGradient = selectedCell.cellGradient
     }
     self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
@@ -123,11 +124,14 @@ extension ViewController : UICollectionViewDataSource{
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
+    print(currentCellShape)
     cell.colorViewSize = currentCellShape
     cell.cellGradient = gradients.allGradients[indexPath.item]
     cell.colorViewOutline = currentShapeOutline
     
-    cell.setViewSize()
+    cell.setNeedsLayout()
+    cell.layoutIfNeeded()
+    
     return cell
   }
   
