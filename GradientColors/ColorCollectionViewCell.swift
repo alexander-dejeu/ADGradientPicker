@@ -29,6 +29,22 @@ class ColorCollectionViewCell: UICollectionViewCell {
   var colorViewSize : cellSize = .quarterSquare
   
   func setViewSize(){
+    var fontSize : CGFloat = 12.0
+    
+    switch colorViewSize{
+    case .quarterSquare:
+      fontSize = 12.0
+    case .square:
+      fontSize = 18.0
+    case .rectangle:
+      fontSize = 15.0
+    }
+    
+    colorTitleLabel.font = UIFont(name: "Montserrat-Regular", size: fontSize)
+    colorHexLabel.font = UIFont(name: "Montserrat-Regular", size: fontSize)
+
+    
+    
     let topShift = colorTitleLabel.frame.maxY + 8
     let bottomShift = (self.frame.height - colorHexLabel.frame.minY) + 8
     let height = self.frame.height - topShift - bottomShift

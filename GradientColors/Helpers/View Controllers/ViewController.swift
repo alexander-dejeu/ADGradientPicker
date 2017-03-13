@@ -102,7 +102,6 @@ class ViewController: UIViewController {
       multiplier *= 1
       cellHeight = colorCollectionView.frame.width / 2.0 - CGFloat(16.0)
     }
-    print("Lmao the cell height is: \(cellHeight)")
     let collectionViewHeight = CGFloat(multiplier) * (cellHeight + 12) + 32 + 40
     
     collectionViewHeightConstrant.constant = collectionViewHeight
@@ -113,11 +112,9 @@ extension ViewController : UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     singleFullScreen = true
     if let selectedCell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell{
-      selectedGradient = selectedCell.cellGradient
+        selectedGradient = selectedCell.cellGradient
     }
-  
     self.performSegue(withIdentifier: "SegueToFullScreen", sender: nil)
-    
   }
 }
 
@@ -126,9 +123,10 @@ extension ViewController : UICollectionViewDataSource{
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
+    cell.colorViewSize = currentCellShape
     cell.cellGradient = gradients.allGradients[indexPath.item]
     cell.colorViewOutline = currentShapeOutline
-    cell.colorViewSize = currentCellShape
+    
     cell.setViewSize()
     return cell
   }
