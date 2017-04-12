@@ -20,6 +20,7 @@ enum direction{
   case middleTopToMiddleBottom
   case middleLeftToMiddleRight
   case topLeft25PercentDownToBottomRight25PercentUp
+  case topLeft25PercentDownToBottomRight20PercentLeft
   case radial
   
   func getStartEndPoints() -> [CGPoint]{
@@ -32,6 +33,8 @@ enum direction{
       return [CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5)]
     case .topLeft25PercentDownToBottomRight25PercentUp:
       return [CGPoint(x: 0, y: 0.25), CGPoint(x: 1, y: 0.75)]
+    case .topLeft25PercentDownToBottomRight20PercentLeft:
+      return [CGPoint(x: 0, y: 0.25), CGPoint(x: 0.8, y: 1.0)]
     case .radial:
       return [CGPoint(x: 0.5, y: 0.5), CGPoint(x: 0, y: 0)]
     }
@@ -794,6 +797,207 @@ class gradients{
   static let viciousStanceS1 = UIColor(red: 41.0/255.0, green: 50.0/255.0, blue: 60.0/255.0, alpha: 1)
   static let viciousStanceS2 = UIColor(red: 72.0/255.0, green: 85.0/255.0, blue: 99.0/255.0, alpha: 1)
   static let viciousStance : [UIColor] = [viciousStanceS1, viciousStanceS2]
+  
+  // 101 Palo Alto Style
+  static let paloAltoT = "Palo Alto"
+  static let paloAltoID = 101
+  static let paloAltoDir = direction.topLeft25PercentDownToBottomRight20PercentLeft
+  static let paloAltoS1 = UIColor(red: 22.0/255.0, green: 160.0/255.0, blue: 133.0/255.0, alpha: 1)
+  static let paloAltoS2 = UIColor(red: 244.0/255.0, green: 208.0/255.0, blue: 63.0/255.0, alpha: 1)
+  static let paloAltoColors : [UIColor] = [paloAltoS1, paloAltoS2]
+  static let paloAlto = gradient(title: paloAltoT, id: paloAltoID, direction: paloAltoDir, colors: paloAltoColors)
+  
+  // 102 Happy Memories Style
+  static let happyMemoriesT = "Happy Memories"
+  static let happyMemoriesID = 102
+  static let happyMemoriesDir = direction.topLeft25PercentDownToBottomRight20PercentLeft
+  static let happyMemoriesS1 = UIColor(red: 255.0/255.0, green: 88.0/255.0, blue: 88.0/255.0, alpha: 1)
+  static let happyMemoriesS2 = UIColor(red: 240.0/255.0, green: 152.0/255.0, blue: 25.0/255.0, alpha: 1)
+  static let happyMemoriesColors : [UIColor] = [happyMemoriesS1, happyMemoriesS2]
+  static let happyMemories = gradient(title: happyMemoriesT, id: happyMemoriesID, direction: happyMemoriesDir, colors: happyMemoriesColors)
+  
+  // 103 Midnight Bloom Style
+  //TODO: Mid Top shifted Left 20? to bottom right shifted20? NEED TO FIC
+  static let midnightBloomT = "Midnight Bloom"
+  static let midnightBloomID = 103
+  static let midnightBloomDir = direction.topLeft25PercentDownToBottomRight20PercentLeft
+  static let midnightBloomS1 = UIColor(red: 78.0/255.0, green: 67.0/255.0, blue: 118.0/255.0, alpha: 1)
+  static let midnightBloomS2 = UIColor(red: 43.0/255.0, green: 88.0/255.0, blue: 118.0/255.0, alpha: 1)
+  static let midnightBloomColors : [UIColor] = [midnightBloomS1, midnightBloomS2]
+  static let midnightBloom = gradient(title: midnightBloomT, id: midnightBloomID, direction: midnightBloomDir, colors: midnightBloomColors)
+
+  // 104 Crystalline Style
+  //TODO: Mid Top shifted Left 20? to bottom right shifted20? NEED TO FIC
+  static let crystallineT = "Crystalline"
+  static let crystallineID = 104
+  static let crystallineDir = direction.topLeft25PercentDownToBottomRight20PercentLeft
+  static let crystallineS1 = UIColor(red: 141.0/255.0, green: 218.0/255.0, blue: 213.0/255.0, alpha: 1)
+  static let crystallineS2 = UIColor(red: 0.0/255.0, green: 205.0/255.0, blue: 172.0/255.0, alpha: 1)
+  static let crystallineColors : [UIColor] = [crystallineS1, crystallineS2]
+  static let crystalline = gradient(title: crystallineT, id: crystallineID, direction: crystallineDir, colors: crystallineColors)
+
+  // 105 Raccoon Back Style
+  //TODO: SPECIAL CASE!
+  static let raccoonBackT = "Raccoon Back"
+  static let raccoonBackID = 105
+  static let raccoonBackDir = direction.middleTopToMiddleBottom
+  static let raccoonBackS1 = UIColor(red: 188.0/255.0, green: 197.0/255.0, blue: 206.0/255.0, alpha: 1)
+  static let raccoonBackS2 = UIColor(red: 146.0/255.0, green: 158.0/255.0, blue: 173.0/255.0, alpha: 1)
+  static let raccoonBackColors : [UIColor] = [raccoonBackS1, raccoonBackS2]
+  static let raccoonBack = gradient(title: raccoonBackT, id: raccoonBackID, direction: raccoonBackDir, colors: raccoonBackColors)
+  
+  // 106 Party Bliss Style
+  static let partyBlissT = "Party Bliss"
+  static let partyBlissID = 106
+  static let partyBlissDir = direction.middleTopToMiddleBottom
+  static let partyBlissS1 = UIColor(red: 245.0/255.0, green: 250.0/255.0, blue: 251.0/255.0, alpha: 1)
+  static let partyBlissS2 = UIColor(red: 171.0/255.0, green: 216.0/255.0, blue: 227.0/255.0, alpha: 1)
+  static let partyBlissColors : [UIColor] = [partyBlissS1, partyBlissS2]
+  static let partyBliss = gradient(title: partyBlissT, id: partyBlissID, direction: partyBlissDir, colors: partyBlissColors)
+  
+  // 107 Confident Cloud Style
+  static let confidentCloudT = "Confident Cloud"
+  static let confidentCloudID = 107
+  static let confidentCloudDir = direction.middleTopToMiddleBottom
+  static let confidentCloudS1 = UIColor(red: 243.0/255.0, green: 231.0/255.0, blue: 233.0/255.0, alpha: 1)
+  static let confidentCloudS2 = UIColor(red: 218.0/255.0, green: 212.0/255.0, blue: 236.0/255.0, alpha: 1)
+  static let confidentCloudColors : [UIColor] = [confidentCloudS1, confidentCloudS2]
+  static let confidentCloud = gradient(title: confidentCloudT, id: confidentCloudID, direction: confidentCloudDir, colors: confidentCloudColors)
+  
+  // 108 Le Cocktail Style
+  static let leCocktailT = "Le Cocktail"
+  static let leCocktailID = 108
+  static let leCocktailDir = direction.bottomLeftToTopRight
+  static let leCocktailS1 = UIColor(red: 135.0/255.0, green: 77.0/255.0, blue: 162.0/255.0, alpha: 1)
+  static let leCocktailS2 = UIColor(red: 196.0/255.0, green: 58.0/255.0, blue: 48.0/255.0, alpha: 1)
+  static let leCocktailColors : [UIColor] = [leCocktailS1, leCocktailS2]
+  static let leCocktail = gradient(title: leCocktailT, id: leCocktailID, direction: leCocktailDir, colors: leCocktailColors)
+  
+  // 109 River City Style
+  static let riverCityT = "River City"
+  static let riverCityID = 109
+  static let riverCityDir = direction.middleTopToMiddleBottom
+  static let riverCityS1 = UIColor(red: 4.0/255.0, green: 190.0/255.0, blue: 254.0/255.0, alpha: 1)
+  static let riverCityS2 = UIColor(red: 68.0/255.0, green: 129.0/255.0, blue: 235.0/255.0, alpha: 1)
+  static let riverCityColors : [UIColor] = [riverCityS1, riverCityS2]
+  static let riverCity = gradient(title: riverCityT, id: riverCityID, direction: riverCityDir, colors: riverCityColors)
+  
+  // 110 Frozen Berry Style
+  static let frozenBerryT = "Frozen Berry"
+  static let frozenBerryID = 110
+  static let frozenBerryDir = direction.middleTopToMiddleBottom
+  static let frozenBerryS1 = UIColor(red: 199.0/255.0, green: 234.0/255.0, blue: 253.0/255.0, alpha: 1)
+  static let frozenBerryS2 = UIColor(red: 232.0/255.0, green: 25.0/255.0, blue: 139.0/255.0, alpha: 1)
+  static let frozenBerryColors : [UIColor] = [frozenBerryS1, frozenBerryS2]
+  static let frozenBerry = gradient(title: frozenBerryT, id: frozenBerryID, direction: frozenBerryDir, colors: frozenBerryColors)
+
+  // 111 Elegence Style
+  //TODO: SPECIAL CASE! OVAL
+  static let eleganceT = "Elegance"
+  static let eleganceID = 111
+  static let eleganceDir = direction.radial
+  static let eleganceS1 = UIColor(red: 234.0/255.0, green: 223.0/255.0, blue: 233.0/255.0, alpha: 1)
+  static let eleganceS2 = UIColor(red: 236.0/255.0, green: 226.0/255.0, blue: 223.0/255.0, alpha: 1)
+  static let eleganceColors : [UIColor] = [eleganceS1, eleganceS2]
+  static let elegance = gradient(title: eleganceT, id: eleganceID, direction: eleganceDir, colors: eleganceColors)
+  
+  // 112 Child Care Style
+  //TODO: Mid Top shifted Left 20? to bottom right shifted20? NEED TO FIC
+  static let childCareT = "Child Care"
+  static let childCareID = 112
+  static let childCareDir = direction.topLeft25PercentDownToBottomRight20PercentLeft
+  static let childCareS1 = UIColor(red: 253.0/255.0, green: 214.0/255.0, blue: 189.0/255.0, alpha: 1)
+  static let childCareS2 = UIColor(red: 247.0/255.0, green: 148.0/255.0, blue: 164.0/255.0, alpha: 1)
+  static let childCareColors : [UIColor] = [childCareS1, childCareS2]
+  static let childCare = gradient(title: childCareT, id: childCareID, direction: childCareDir, colors: childCareColors)
+  
+  // 113 Flying Lemon Style
+  // TODO : BOTTOM LEFT 25% UP to Top Right 25%Down
+  static let flyingLemonT = "Flying Lemon"
+  static let flyingLemonID = 113
+  static let flyingLemonDir = direction.bottomLeftToTopRight
+  static let flyingLemonS1 = UIColor(red: 100.0/255.0, green: 179.0/255.0, blue: 244.0/255.0, alpha: 1)
+  static let flyingLemonS2 = UIColor(red: 194.0/255.0, green: 229.0/255.0, blue: 156.0/255.0, alpha: 1)
+  static let flyingLemonColors : [UIColor] = [flyingLemonS1, flyingLemonS2]
+  static let flyingLemon = gradient(title: flyingLemonT, id: flyingLemonID, direction: flyingLemonDir, colors: flyingLemonColors)
+  
+  // 114 New Retrowave Style
+  static let newRetrowaveT = "New Retrowave"
+  static let newRetrowaveID = 114
+  static let newRetrowaveDir = direction.middleTopToMiddleBottom
+  static let newRetrowaveS1 = UIColor(red: 255.0/255.0, green: 200.0/255.0, blue: 169.0/255.0, alpha: 1)
+  static let newRetrowaveS2 = UIColor(red: 169.0/255.0, green: 129.0/255.0, blue: 187.0/255.0, alpha: 1)
+  static let newRetrowaveS3 = UIColor(red: 59.0/255.0, green: 65.0/255.0, blue: 197.0/255.0, alpha: 1)
+  static let newRetrowaveColors : [UIColor] = [newRetrowaveS1, newRetrowaveS2, newRetrowaveS3]
+  static let newRetrowave = gradient(title: newRetrowaveT, id: newRetrowaveID, direction: newRetrowaveDir, colors: newRetrowaveColors)
+  
+  // 115 Hidden Jaguar Style
+  static let hiddenJaguarT = "Hidden Jaguar"
+  static let hiddenJaguarID = 115
+  static let hiddenJaguarDir = direction.middleTopToMiddleBottom
+  static let hiddenJaguarS1 = UIColor(red: 249.0/255.0, green: 240.0/255.0, blue: 71.0/255.0, alpha: 1)
+  static let hiddenJaguarS2 = UIColor(red: 15.0/255.0, green: 216.0/255.0, blue: 80.0/255.0, alpha: 1)
+  static let hiddenJaguarColors : [UIColor] = [hiddenJaguarS1, hiddenJaguarS2]
+  static let hiddenJaguar = gradient(title: hiddenJaguarT, id: hiddenJaguarID, direction: hiddenJaguarDir, colors: hiddenJaguarColors)
+  
+  // 116 Above The Sky Style
+  static let aboveTheSkyT = "Above The Sky"
+  static let aboveTheSkyID = 116
+  static let aboveTheSkyDir = direction.middleTopToMiddleBottom
+  static let aboveTheSkyS1 = UIColor(red: 188.0/255.0, green: 188.0/255.0, blue: 188.0/255.0, alpha: 1)
+  static let aboveTheSkyS2 = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1)
+  static let aboveTheSkyS3 = UIColor(red: 239.0/255.0, green: 239.0/255.0, blue: 239.0/255.0, alpha: 1)
+  static let aboveTheSkyS4 = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
+  static let aboveTheSkyS5 = UIColor(red: 211.0/255.0, green: 211.0/255.0, blue: 211.0/255.0, alpha: 1)
+  static let aboveTheSkyColors : [UIColor] = [aboveTheSkyS1, aboveTheSkyS2, aboveTheSkyS3, aboveTheSkyS4, aboveTheSkyS5]
+  static let aboveTheSky = gradient(title: aboveTheSkyT, id: aboveTheSkyID, direction: aboveTheSkyDir, colors: aboveTheSkyColors)
+  
+  // 117 Nega Style
+  //TODO: Shifted Middle Bottom to Top Right
+  static let negaT = "Nega"
+  static let negaID = 117
+  static let negaDir = direction.middleTopToMiddleBottom
+  static let negaS1 = UIColor(red: 238.0/255.0, green: 156.0/255.0, blue: 167.0/255.0, alpha: 1)
+  static let negaS2 = UIColor(red: 255.0/255.0, green: 221.0/255.0, blue: 225.0/255.0, alpha: 1)
+  static let negaColors : [UIColor] = [negaS1, negaS2]
+  static let nega = gradient(title: negaT, id: negaID, direction: negaDir, colors: negaColors)
+  
+  // 118 Dense Water Style
+  //TODO: Middle left to Right but with strange shift :O
+  static let denseWaterT = "Dense Water"
+  static let denseWaterID = 118
+  static let denseWaterDir = direction.middleLeftToMiddleRight
+  static let denseWaterS1 = UIColor(red: 58.0/255.0, green: 181.0/255.0, blue: 176.0/255.0, alpha: 1)
+  static let denseWaterS2 = UIColor(red: 61.0/255.0, green: 153.0/255.0, blue: 190.0/255.0, alpha: 1)
+  static let denseWaterS3 = UIColor(red: 86.0/255.0, green: 49.0/255.0, blue: 122.0/255.0, alpha: 1)
+  static let denseWaterColors : [UIColor] = [denseWaterS1, denseWaterS2, denseWaterS3]
+  static let denseWater = gradient(title: denseWaterT, id: denseWaterID, direction: denseWaterDir, colors: denseWaterColors)
+  
+  // 119 Chemic Aqua Style
+  //TODO: Litterally wtf...
+  static let chemicAquaT = "Chemic Aqua"
+  static let chemicAquaID = 119
+  static let chemicAquaDir = direction.middleLeftToMiddleRight
+  static let chemicAquaS1 = UIColor(red: 58.0/255.0, green: 181.0/255.0, blue: 176.0/255.0, alpha: 1)
+  static let chemicAquaS2 = UIColor(red: 61.0/255.0, green: 153.0/255.0, blue: 190.0/255.0, alpha: 1)
+  static let chemicAquaS3 = UIColor(red: 86.0/255.0, green: 49.0/255.0, blue: 122.0/255.0, alpha: 1)
+  static let chemicAquaColors : [UIColor] = [chemicAquaS1, chemicAquaS2, chemicAquaS3]
+  static let chemicAqua = gradient(title: chemicAquaT, id: chemicAquaID, direction: chemicAquaDir, colors: chemicAquaColors)
+  
+  // 120 Seashore Style
+  static let seashoreT = "Seashore"
+  static let seashoreID = 120
+  static let seashoreDir = direction.middleTopToMiddleBottom
+  static let seashoreS1 = UIColor(red: 104.0/255.0, green: 224.0/255.0, blue: 207.0/255.0, alpha: 1)
+  static let seashoreS2 = UIColor(red: 32.0/255.0, green: 156.0/255.0, blue: 255.0/255.0, alpha: 1)
+  static let seashoreColors : [UIColor] = [seashoreS1, seashoreS2]
+  static let seashore = gradient(title: seashoreT, id: seashoreID, direction: seashoreDir, colors: seashoreColors)
+
+
+
+
+
+
   
 //  static let allColors: [[UIColor]] = [warmFlameColors, nightFadeColors, springWarmthColors, juicyPeachColors, youngPassion, ladyLips, sunnyMorning, rainyAshville, frozenDreams, winterNeva, dustyGrass]
   

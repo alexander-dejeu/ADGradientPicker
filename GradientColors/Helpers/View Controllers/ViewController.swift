@@ -124,7 +124,7 @@ extension ViewController : UICollectionViewDataSource{
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
     cell.layer.cornerRadius = 10
     cell.clipsToBounds = true
-    print(currentCellShape)
+//    print(currentCellShape)
     cell.colorViewSize = currentCellShape
     cell.cellGradient = gradients.allGradients[indexPath.item]
     cell.colorViewOutline = currentShapeOutline

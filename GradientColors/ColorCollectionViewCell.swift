@@ -20,41 +20,14 @@ enum cellSize {
 }
 
 class ColorCollectionViewCell: UICollectionViewCell {
-  @IBOutlet weak var ratioConstraint: NSLayoutConstraint!
-  @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
-  @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
   
+
   override func layoutIfNeeded() {
     super.layoutIfNeeded()
+//    self.subView.layer.cornerRadius = self.subView.bounds.width / 2
     setViewSize()
-//    addConstraintsForView
   }
 
-  
-  func addConstraintsForView(){
-    for constraint in colorView.constraints{
-      colorView.removeConstraint(constraint)
-    }
-    // Leading, Trailing, Center, Ratio, Top and Bottom
-    let centerConstraint = NSLayoutConstraint(item: colorView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
-    let topConstant = NSLayoutConstraint(item: colorView, attribute: .top, relatedBy: .equal, toItem: colorTitleLabel, attribute: .bottom, multiplier: 1, constant: 8)
-    let bottomConstant = NSLayoutConstraint(item: colorView, attribute: .bottom, relatedBy: .equal, toItem: colorHexLabel, attribute: .top, multiplier: 1, constant: 8)
-    let ratioConstant = NSLayoutConstraint(item: colorView, attribute: .height, relatedBy: .equal, toItem: colorView, attribute: .width, multiplier: 1,constant: 0)
-    
-    let leadingConstant = NSLayoutConstraint(item: colorView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1, constant: 8)
-    let trailingConstant = NSLayoutConstraint(item: colorView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1, constant: 8)
-
-    
-    switch colorViewSize{
-    case .square, .quarterSquare:
-      colorView.addConstraints([centerConstraint, topConstant, bottomConstant, ratioConstant])
-    case .rectangle:
-      colorView.addConstraints([leadingConstant, trailingConstant, topConstant, bottomConstant])
-    }
-
-  }
-
-  
   @IBOutlet weak var colorTitleLabel : UILabel!
   @IBOutlet weak var colorView : UIView!
   @IBOutlet weak var colorHexLabel : UILabel!
